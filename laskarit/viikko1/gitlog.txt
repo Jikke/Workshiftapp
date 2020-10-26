@@ -1,0 +1,105 @@
+commit 072b781490cb08be9bca2c48173ac335fb4b7419
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:26:07 2020 +0200
+
+    poistettu file1 ja uudelleennimetty file2 file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 7c2680dcb39b6b7063c560456f6e27dc6dbefd63
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:24:25 2020 +0200
+
+    luotu alihakimisto tiedostoja/ ja sinne tiedostot file1, file2, file3
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a04f2eb60ffb77e2eea1f1192242c7452ffbfecb
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:14:59 2020 +0200
+
+    poistettu ja lisätty sisältöä tiedostoista eka.txt ja kolmas.txt
+
+ eka.txt    | 3 +--
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+commit 21fd56800de45d7c70cbbe21259ae9b894609c3a
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:12:01 2020 +0200
+
+    uudelleennimetty tiedosto.txt eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7181888481786467f0fcb97e7127c042a4ecf5b7
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:10:36 2020 +0200
+
+    poistettu toinen.txt
+
+ toinen.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 77103e8ad5c72f3185493c4ea9d98d75d6da38bb
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:08:59 2020 +0200
+
+    kopioitu tekstiä tiedostoon tiedosto.txt
+
+ tiedosto.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit 4148b89c7d6d9b47da8aff221ab3cd1b62b4d646
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:05:11 2020 +0200
+
+    luotu kansio stuff ja sinne tiedosto lappu.txt
+
+ stuff/lappu.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 05cacaa607cb248225da28cedcdb32f987d505d0
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:03:53 2020 +0200
+
+    muokattu tiedostoja toinen.txt ja kolmas.txt
+
+ kolmas.txt | 2 ++
+ toinen.txt | 2 ++
+ 2 files changed, 4 insertions(+)
+
+commit 083c61ebf73c0b3b717a523632fa26c152cdb62f
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:02:52 2020 +0200
+
+    luotu kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 23bc91fce68c933b19cea7ba5b145ad21160b3c7
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 12:00:15 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit 3f2673e544ecd7e01938cdf3f06731dc3d1569d9
+Author: Jirko Leivo <jirko.leivo@gmail.com>
+Date:   Mon Oct 26 11:58:10 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+

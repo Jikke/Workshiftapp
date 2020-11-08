@@ -24,5 +24,5 @@ Jakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Jakso al
    
 ### Työntekijöiden luonti  
     
-    - Annetaan työntekijän nimi
-    - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin jakson vuorokaudelle.
+   - Annetaan työntekijän nimi
+   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin jakson vuorokaudelle.

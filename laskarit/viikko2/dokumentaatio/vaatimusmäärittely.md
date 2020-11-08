@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelijan työtä. Sovelluksen avulla suunnitellaan työntekijöiden työvuorot työjaksoille.
+Sovelluksen avulla suunnitellaan työntekijöiden työvuorot työjaksoille. Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelijan työtä.
 
 ## Käyttäjät
 
@@ -20,7 +20,7 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
 ### Uuden työjakson luonti
 
-   - Määritellään jaksolle uniikki nimi
+   - Määritellään jaksolle uniikki tunniste
    - Määritellään työntekijöiden kokonaismäärä tälle jaksolle
 
 Jakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu- ja iltavuoro, sekä vapaapäivä -kentät. Jakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
@@ -33,7 +33,7 @@ Seuraavaksi jakson luonnissa luodaan _työntekijä_ -oliot tälle jaksolle seura
 ### Työjakson tarkastelu
 
    - Listaa olemassaolevat jaksot
-   - Tulostaa näkyviin syötetyn jakson työntekijöiden vuorot vuorokausittain listattuna
+   - Tulostaa näkyviin syötetyn jaksotunnisteen perusteella jakson työntekijöiden vuorot vuorokausittain listattuna
 
 ### Poistu
 

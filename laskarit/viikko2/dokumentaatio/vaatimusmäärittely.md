@@ -54,8 +54,8 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
    
 ### Tärkeimpiä seuraavat laajennukset
    
+   - Graafinen käyttöliittymä
    - Työjakson muokkaus luomisen jälkeen
-   - Määritellään kussakin vuorossa tarvittava työntekijöiden minimimäärä
    - Jakso voi alkaa käyttäjän valitsemana viikonpäivänä
    - Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
    - Työjaksojen kopiointi

@@ -20,20 +20,20 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
 ### Uuden työjakson luonti
 
-   - Määritellään jaksolle uniikki tunniste
-   - Määritellään työntekijöiden kokonaismäärä tälle jaksolle
+   - Määritellään uniikki työjaksotunniste
+   - Määritellään työntekijöiden kokonaismäärä tälle työjaksolle
 
-Jakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu- ja iltavuoro, sekä vapaapäivä -kentät. Jakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
+Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu- ja iltavuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
 
-Seuraavaksi jakson luonnissa luodaan _työntekijä_ -oliot tälle jaksolle seuraavasti:
+Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksolle seuraavasti:
     
    - Annetaan työntekijän nimi
-   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin jakson vuorokaudelle.
+   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
 
 ### Työjakson tarkastelu
 
-   - Listaa olemassaolevat jaksot
-   - Tulostaa näkyviin syötetyn jaksotunnisteen perusteella jakson työntekijöiden vuorot vuorokausittain listattuna
+   - Listaa olemassaolevat työjaksot
+   - Tulostaa näkyviin syötetyn työjaksotunnisteen perusteella työjakson työntekijöiden vuorot vuorokausittain listattuna
 
 ### Poistu
 
@@ -47,7 +47,7 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
 
    - Yövuoron lisäys vuorokausiolioon
    - Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
-   - Jakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
+   - Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
    - Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
    - Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
    - Työntekijöille määritellään vapaapäivien määrä
@@ -56,6 +56,7 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
    
    - Graafinen käyttöliittymä
    - Työjakson muokkaus luomisen jälkeen
-   - Jakso voi alkaa käyttäjän valitsemana viikonpäivänä
+   - Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
    - Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
+   - Työjakson pituuden vapaavalintaisuus
    - Työjaksojen kopiointi

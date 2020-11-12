@@ -20,20 +20,20 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
 ### Uuden työjakson luonti
 
-   - Määritellään uniikki työjaksotunniste
-   - Määritellään työntekijöiden kokonaismäärä tälle työjaksolle
-
 Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu- ja iltavuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
+
 
 Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksolle seuraavasti:
     
    - Annetaan työntekijän nimi
+   
+### Työntekijän lisääminen vuoroihin
+
    - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
 
 ### Työjakson tarkastelu
 
-   - Listaa olemassaolevat työjaksot
-   - Tulostaa näkyviin syötetyn työjaksotunnisteen perusteella työjakson työntekijöiden vuorot vuorokausittain listattuna
+   - Tulostaa työntekijöiden vuorot vuorokausittain listattuna
 
 ### Poistu
 

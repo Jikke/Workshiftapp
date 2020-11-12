@@ -13,6 +13,7 @@ Alkuvaiheessa sovelluksella on vain _vuorosuunnittelija_ -käyttäjärooli. Myö
 Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
    - Uuden työjakson luonti
+   - Työntekijän lisääminen vuoroihin
    - Työjakson tarkastelu
    - Poistu
 

@@ -7,6 +7,7 @@ package workshiftapp.workshiftapp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -67,25 +68,83 @@ public class Period {
     
         this.employees = new ArrayList<>();
     }
-
-    public ArrayList<String> getDays(){
-        ArrayList<String> dayList = new ArrayList<String>();
+    
+    public ArrayList<Day> getDays(){
+        ArrayList<Day> dayList = new ArrayList<Day>();
         for(int i=0; i<this.days.size(); i++){
-          dayList.add(this.days.get(i).toString());  
+          dayList.add(this.days.get(i));  
         }
-        return(dayList);
+        return dayList;
     }
 
-    public void addEmployee(String name){
-        Person newEmployee = new Person(name);
+    public void addEmployees(){
+        Scanner scan = new Scanner(System.in);
+        while(true){
+        System.out.println("Luo työntekijä antamalla nimi. Tyhjä syöte lopettaa.");
+        String employeeName = scan.nextLine();
+        if(employeeName.equals("")){
+            System.out.println("Lisätty seuraavat työntekijät jaksolle: \n"+this.printEmployees());
+            break;
+        }
+        Person newEmployee = new Person(employeeName);
         this.employees.add(newEmployee);
+        }
     }
+    
+    public void setEmployees(){
+        Scanner scan = new Scanner(System.in);
+        for(Day currentDay : this.getDays()){
+           String employeeName = ""; 
+           //aamuvuoron loop 
+           while(true){ 
+           System.out.println("Lisää päivän "+currentDay+" aamuvuorooon haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
+           employeeName = scan.nextLine();
+           if(employeeName.equals("") || employeeName.equals("x")){
+            break;
+           }
+        currentDay.setShift(employeeName,"aamu");
+           }
+           //iltavuoron loop
+           while(true){ 
+           System.out.println("Lisää päivän "+currentDay+" iltavuorooon haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
+           employeeName = scan.nextLine();
+           if(employeeName.equals("") || employeeName.equals("x")){
+            break;
+           }
+        currentDay.setShift(employeeName,"ilta");
+           }
+           //vapaapäivän loop
+           while(true){ 
+           System.out.println("Lisää päivän "+currentDay+" vapaapäivälle haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
+           employeeName = scan.nextLine();
+           if(employeeName.equals("") || employeeName.equals("x")){
+            break;
+           }
+        currentDay.setShift(employeeName,"vapaa");
+           }//vapaapäivän loop päättyy
+        //poistu kokonaan setEmploees loopista syotteella x   
+           if (employeeName.equals("x")){
+            break;
+        }   
+        }
+    }    
+    
 
     public ArrayList<Person> getEmployees(){
+        ArrayList<Person> employeeList = new ArrayList<Person>();
         for(int i=0; i<this.employees.size(); i++){
-            
+            employeeList.add(this.employees.get(i));
         }
-        return(this.employees);
+        return employeeList;
+    }
+    
+    public String printEmployees(){
+        ArrayList<Person> employeeObjects = this.getEmployees();
+        String employeeString = "";
+        for(Person employee : employeeObjects){
+            employeeString += ("\n"+employee.getName());
+        }
+        return employeeString;
     }
 
     public Boolean findEmployee(String name){
@@ -96,5 +155,35 @@ public class Period {
         }
             return false;
     }        
-            
+    
+    public String toString(){
+        ArrayList<Day> days = this.getDays();
+        String wholePeriod = "";
+        //looppaa läpi kaikkien päivien
+        for (Day currentDay : days){
+            //luo vuoroista omat String-listat jokaisen uuden päivän tarkastelun alussa
+            ArrayList<String> morningList = currentDay.getMorning();
+            ArrayList<String> eveningList = currentDay.getEvening();
+            ArrayList<String> dayoffList = currentDay.getDayoff();
+            //Luo lopulliseen String-olioon lisättävät String-oliot vuorojen työtenkijöistä
+            String morning = "Aamuvuorossa:";
+            String evening = "Iltavuorossa:";
+            String dayoff = "Vapaalla:";
+            //silmukoi tämän päivän kunkin vuoron listojen läpi ja lisää työntekijöiden nimet vuorojen String-olioihin
+            for(int i=0; i<currentDay.getMorning().size(); i++){
+            morning += (" "+morningList.get(i));
+            }
+            for(int i=0; i<currentDay.getEvening().size(); i++){
+            evening += (" "+eveningList.get(i));
+            } 
+            for(int i=0; i<currentDay.getDayoff().size(); i++){
+            dayoff += (" "+dayoffList.get(i));
+            } 
+            //kokoa lopulliseen String-olioon tämän päivän osalta kerätyt työntekijät        
+            wholePeriod += ("\n"+currentDay.getWeekday()+": "+morning+", "+evening+","+dayoff);
+        }
+        return wholePeriod;
+    }
+    
+    
 }

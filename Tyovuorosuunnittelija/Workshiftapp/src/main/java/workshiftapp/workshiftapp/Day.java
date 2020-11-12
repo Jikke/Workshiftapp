@@ -53,7 +53,7 @@ public class Day {
 
     }
 
-    
+    //palauttaa listan aamuvuoron työntekijöistä
     public ArrayList<String> getMorning() {
         ArrayList<String> morningList = new ArrayList<>();
         for (int i=0;i<this.morning.size();i++){
@@ -61,7 +61,7 @@ public class Day {
         }
         return morningList;
     }
-    
+    //palauttaa listan iltavuoron työntekijöistä
     public ArrayList<String> getEvening() {
         ArrayList<String> eveningList = new ArrayList<>();
         for (int i=0;i<this.evening.size();i++){
@@ -69,7 +69,7 @@ public class Day {
         }
         return eveningList;
     }
-    
+    //palauttaa listan vapaapäivän työntekijöistä
     public ArrayList<String> getDayoff() {
         ArrayList<String> dayoffList = new ArrayList<>();
         for (int i=0;i<this.dayoff.size();i++){
@@ -78,10 +78,8 @@ public class Day {
         return dayoffList;
     }
     
-    @Override 
     public String toString(){
         return this.getWeekday();
     }
-    
 
 }

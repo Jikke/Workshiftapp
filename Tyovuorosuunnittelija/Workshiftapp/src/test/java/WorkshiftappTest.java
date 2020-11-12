@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import workshiftapp.workshiftapp.Day;
+import workshiftapp.workshiftapp.Period;
 import workshiftapp.workshiftapp.Person;
 
 /**
@@ -20,11 +21,18 @@ import workshiftapp.workshiftapp.Person;
  */
 public class WorkshiftappTest {
     
+    Period testPeriod;
+    Day testDay;
+    ArrayList<String> testList;
+    
     public WorkshiftappTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+     
+        
+        
     }
     
     @AfterClass
@@ -33,6 +41,11 @@ public class WorkshiftappTest {
     
     @Before
     public void setUp() {
+        
+     testPeriod = new Period();
+     testDay = new Day("Test");   
+     testList = new ArrayList<String>();
+        
     }
     
     @After
@@ -50,17 +63,14 @@ public class WorkshiftappTest {
      
      @Test
      public void constructorCreatesDayProperly() {
-     Day testDay = new Day("Test");
      assertEquals("Test", testDay.getWeekday());  
      }
      
      @Test
      public void daySetMorningShiftWorks() {
-     ArrayList<String> testList = new ArrayList<>();
      testList.add("Aatami");
      testList.add("Bertta");
      testList.add("Cecilia");
-     Day testDay = new Day("Test");
      testDay.setShift("Aatami", "aamu");
      testDay.setShift("Bertta", "aamu");
      testDay.setShift("Cecilia", "aamu");
@@ -69,11 +79,9 @@ public class WorkshiftappTest {
      
      @Test
      public void daySetEveningShiftWorks() {
-     ArrayList<String> testList = new ArrayList<>();
      testList.add("David");
      testList.add("Eemeli");
      testList.add("Faarao");
-     Day testDay = new Day("Test");
      testDay.setShift("David", "ilta");
      testDay.setShift("Eemeli", "ilta");
      testDay.setShift("Faarao", "ilta");
@@ -82,13 +90,11 @@ public class WorkshiftappTest {
      
      @Test
      public void daySetDayoffWorks() {
-     ArrayList<String> testList = new ArrayList<>();
      testList.add("Gabriel");
      testList.add("Hannes");
      testList.add("Iivo");
      testList.add("Jaakko");
      testList.add("Kalevi");
-     Day testDay = new Day("Test");
      testDay.setShift("Gabriel", "vapaa");
      testDay.setShift("Hannes", "vapaa");
      testDay.setShift("Iivo", "vapaa");
@@ -96,4 +102,15 @@ public class WorkshiftappTest {
      testDay.setShift("Kalevi", "vapaa");
      assertTrue(testList.containsAll(testDay.getDayoff()) && testDay.getDayoff().containsAll(testList));
      }
+     
+     @Test
+     public void constructorCreatesPeriodProperly(){
+         assertEquals("[Maanantai1, Tiistai1, Keskiviikko1, Torstai1, Perjantai1, Lauantai1, Sunnuntai1, "
+                 + "Maanantai2, Tiistai2, Keskiviikko2, Torstai2, Perjantai2, Lauantai2, Sunnuntai2, "
+                 + "Maanantai3, Tiistai3, Keskiviikko3, Torstai3, Perjantai3, Lauantai3, Sunnuntai3]"
+         , testPeriod.getDays().toString());
+     }
+     
+    
+     
 }

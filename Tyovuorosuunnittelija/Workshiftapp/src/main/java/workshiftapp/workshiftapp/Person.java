@@ -11,9 +11,15 @@ package workshiftapp.workshiftapp;
  */
 public class Person {
     
-    private String name;
+    private final String name;
     
+    //konstruktori
     public Person(String name){
         this.name = name;
     }
+    
+    public String getName(){
+        return this.name;
+    }
+
 }

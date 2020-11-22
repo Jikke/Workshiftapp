@@ -1,9 +1,14 @@
-# Ohjelmistotekniikka, työvuorosuunnittelija -sovellus
-## Tehtävät
-### Viikko 1
-[komentorivi.txt](https://github.com/Jikke/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)\
-[gitlog.txt](https://github.com/Jikke/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+# Workshiftapp
+Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelua. Sovelluksella luodaan työjakso, johon lisätään työpäivien vuoroihin työntekijöitä.
 
-### Viikko 2
+## Dokumentaatio
 [vaatimusmaarittely.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)\
 [tyoaikataulukko.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)
+
+## Komentorivitoiminnot
+### Testaus
+Testit suoritetaan komennolla \
+```mvn test```\
+Testikattavuusraportti luodaan komennolla\
+```mvn jacoco:report```\
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_

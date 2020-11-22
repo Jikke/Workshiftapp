@@ -31,7 +31,7 @@ Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksol
    
 ### Työntekijän lisääminen vuoroihin
 
-   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle. - \[x]
+   - \[x] Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
 
 ### Työjakson tarkastelu
 

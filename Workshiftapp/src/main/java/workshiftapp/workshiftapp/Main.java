@@ -14,11 +14,11 @@ public class Main {
     
     public static void main(String[] args){
     
-    //Menu menu = new Menu();
-    //menu.display();
-    Period uusi = new Period();
-    uusi.addEmployees();
-    System.out.println(uusi.printEmployees());
-    
+    Menu menu = new Menu();
+    menu.display();
+    //Period uusi = new Period();
+    //uusi.addEmployees();
+    //System.out.println(uusi.printEmployees());
+    //System.out.println(uusi);
     }
 }

@@ -12,11 +12,12 @@ import java.util.ArrayList;
  *
  * @author jeoleivo
  */
-public class Day {
+public class Day{
     
     private final String weekday;
     private ArrayList<String> morning;
     private ArrayList<String> evening;
+    private ArrayList<String> night;
     private ArrayList<String> dayoff;
 
     //konstruktori
@@ -24,6 +25,7 @@ public class Day {
         this.weekday = dayname;
         this.morning = new ArrayList<>();
         this.evening = new ArrayList<>();
+        this.night = new ArrayList<>();
         this.dayoff = new ArrayList<>();
     }
     
@@ -34,17 +36,18 @@ public class Day {
     public void setShift(String name, String shift) {
         if(shift.equals("aamu")){
             this.morning.add(name);
-            System.out.println("Henkilön "+name+" lisääminen aamuvuoroon onnistui.");
             return;
         }
         if(shift.equals("ilta")){
             this.evening.add(name);
-            System.out.println("Henkilön "+name+" lisääminen iltavuoroon onnistui.");
+            return;
+        }
+        if(shift.equals("yö")){
+            this.night.add(name);
             return;
         }
         if(shift.equals("vapaa")){
             this.dayoff.add(name);
-            System.out.println("Henkilön "+name+" lisääminen vapaapäivälle onnistui.");
             return;
         } else {
             System.out.println("Virheellinen syöte");
@@ -69,6 +72,14 @@ public class Day {
         }
         return eveningList;
     }
+    //palauttaa listan yövuoron työntekijöistä
+    public ArrayList<String> getNight() {
+        ArrayList<String> nightList = new ArrayList<>();
+        for (int i=0;i<this.night.size();i++){
+            nightList.add(this.night.get(i));
+        }
+        return nightList;
+    }
     //palauttaa listan vapaapäivän työntekijöistä
     public ArrayList<String> getDayoff() {
         ArrayList<String> dayoffList = new ArrayList<>();
@@ -77,6 +88,7 @@ public class Day {
         }
         return dayoffList;
     }
+    
     
     public String toString(){
         return this.getWeekday();

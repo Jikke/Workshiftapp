@@ -114,7 +114,16 @@ public class WorkshiftappTest {
          , testPeriod.getDays().toString());
      }
      
+     @Test
+     public void personAddAndGetShiftTest(){
+         Person testPerson = new Person("testPerson");
+         testPerson.addShift("Tiistai2", "ilta");
+         assertEquals("ilta",testPerson.getShift("Tiistai2"));
+     }
     
+     public void periodGetDay(){
+         assertEquals(testPeriod.getDays().get(15), testPeriod.findDay("Tiistai3"));
+     }
     
      
 }

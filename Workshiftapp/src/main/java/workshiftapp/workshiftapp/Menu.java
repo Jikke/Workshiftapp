@@ -23,7 +23,8 @@ public class Menu {
         "  1) Uuden työjakson luonti\n" +
         "  2) Työntekijöiden lisääminen vuorohoin\n" +
         "  3) Työjakson tarkastelu\n" +
-        "  4) Poistu"
+        "  4) Työntekijän vuoron tarkastus\n" +
+        "  5) Poistu"
     );
      
     int selection = input.nextInt();
@@ -40,6 +41,9 @@ case 3:
   this.checkPeriod();
   break;
 case 4:
+  this.checkEmployee();
+  break;  
+case 5:
   this.exit();
   break;
 default:
@@ -52,8 +56,7 @@ default:
         currentPeriod = new Period();
         System.out.println("Luotu uusi jakso.");
         currentPeriod.addEmployees();
-        this.display();
-        
+        this.display();  
     }
     
     public void setPeriodEmployees(){
@@ -62,8 +65,14 @@ default:
     }
     
     public void checkPeriod(){
-        currentPeriod.toString();
+        System.out.println(currentPeriod);
         this.display();
+    }
+    
+    public void checkEmployee(){
+        currentPeriod.checkEmployee();
+        this.display();
+        
     }
     
     public void exit(){

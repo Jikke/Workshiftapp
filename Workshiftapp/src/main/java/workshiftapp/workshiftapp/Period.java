@@ -142,7 +142,7 @@ public class Period {
         ArrayList<Person> employeeObjects = this.getEmployees();
         String employeeString = "";
         for(Person employee : employeeObjects){
-            employeeString += ("\n"+employee.getName());
+            employeeString += (employee.getName()+"\n");
         }
         return employeeString;
     }

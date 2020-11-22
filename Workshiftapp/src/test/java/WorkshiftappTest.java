@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,6 +49,7 @@ public class WorkshiftappTest {
      testList = new ArrayList<String>();
         
     }
+    
     
     @After
     public void tearDown() {
@@ -111,6 +114,7 @@ public class WorkshiftappTest {
          , testPeriod.getDays().toString());
      }
      
+    
     
      
 }

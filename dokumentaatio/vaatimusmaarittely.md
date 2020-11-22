@@ -35,15 +35,15 @@ Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksol
 
 ### Työjakson tarkastelu
 
-   - Tulostaa työntekijöiden vuorot vuorokausittain listattuna - \[x]
+   - \[x] Tulostaa työntekijöiden vuorot vuorokausittain listattuna 
    
 ### Työntekijän vuoron tarkistus
 
-   - Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on - \[x] 
+   - \[x] Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on
 
 ### Poistu
 
-   - Sulkee sovelluksen - \[x]
+   - \[x] Sulkee sovelluksen
    
 ## Jatkokehitysideoita
 
@@ -51,18 +51,18 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
 
 ### Tärkeimmät laajennukset
 
-   - Yövuoron lisäys vuorokausiolioon - \[x]
-   - Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
-   - Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
-   - Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
-   - Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
-   - Työntekijöille määritellään vapaapäivien määrä
+   - \[x] Yövuoron lisäys vuorokausiolioon
+   - \[ ] Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
+   - \[ ] Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
+   - \[ ] Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
+   - \[ ] Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
+   - \[ ] Työntekijöille määritellään vapaapäivien määrä
    
 ### Tärkeimpiä seuraavat laajennukset
    
-   - Graafinen käyttöliittymä
-   - Työjakson muokkaus luomisen jälkeen
-   - Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
-   - Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
-   - Työjakson pituuden vapaavalintaisuus
-   - Työjaksojen kopiointi
+   - \[ ] Graafinen käyttöliittymä
+   - \[ ] Työjakson muokkaus luomisen jälkeen
+   - \[ ] Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
+   - \[ ] Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
+   - \[ ] Työjakson pituuden vapaavalintaisuus
+   - \[ ] Työjaksojen kopiointi

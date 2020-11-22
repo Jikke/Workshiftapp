@@ -15,6 +15,7 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
    - Uuden työjakson luonti
    - Työntekijän lisääminen vuoroihin
    - Työjakson tarkastelu
+   - Työntekijän vuoron tarkastelu
    - Poistu
 
 ## Perusversion tarjoama toiminnallisuus
@@ -30,15 +31,19 @@ Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksol
    
 ### Työntekijän lisääminen vuoroihin
 
-   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
+   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle. - [x]
 
 ### Työjakson tarkastelu
 
-   - Tulostaa työntekijöiden vuorot vuorokausittain listattuna
+   - Tulostaa työntekijöiden vuorot vuorokausittain listattuna - [x]
+   
+### Työntekijän vuoron tarkistus
+
+   - Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on - [x]
 
 ### Poistu
 
-   - Sulkee sovelluksen
+   - Sulkee sovelluksen - [x]
    
 ## Jatkokehitysideoita
 
@@ -46,7 +51,7 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
 
 ### Tärkeimmät laajennukset
 
-   - Yövuoron lisäys vuorokausiolioon
+   - Yövuoron lisäys vuorokausiolioon - [x]
    - Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
    - Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
    - Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta

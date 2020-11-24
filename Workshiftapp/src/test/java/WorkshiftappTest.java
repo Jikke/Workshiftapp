@@ -13,9 +13,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import workshiftapp.workshiftapp.Day;
-import workshiftapp.workshiftapp.Period;
-import workshiftapp.workshiftapp.Person;
+import domain.Day;
+import domain.Period;
+import domain.Person;
 
 /**
  *
@@ -26,6 +26,7 @@ public class WorkshiftappTest {
     Period testPeriod;
     Day testDay;
     ArrayList<String> testList;
+    Person testEmployee;
     
     public WorkshiftappTest() {
     }
@@ -47,6 +48,7 @@ public class WorkshiftappTest {
      testPeriod = new Period();
      testDay = new Day("Test");   
      testList = new ArrayList<String>();
+     testEmployee = new Person("testEmployee");
         
     }
     
@@ -120,10 +122,37 @@ public class WorkshiftappTest {
          testPerson.addShift("Tiistai2", "ilta");
          assertEquals("ilta",testPerson.getShift("Tiistai2"));
      }
-    
-     public void periodGetDay(){
+     @Test
+     public void periodGetDayProperArgument(){
          assertEquals(testPeriod.getDays().get(15), testPeriod.findDay("Tiistai3"));
      }
-    
      
+     @Test
+     public void periodGetDayWrongArgument(){
+         assertNotEquals(testPeriod.getDays().get(16), testPeriod.findDay("Tiistai3"));
+     }
+    
+     @Test
+     public void periodFindEmployeeProperArgument(){
+         Person abc = new Person("abc");
+         Person def = new Person("def");
+         Person hij = new Person("hij");
+         testPeriod.addEmployee(abc);
+         testPeriod.addEmployee(testEmployee);
+         testPeriod.addEmployee(def);
+         testPeriod.addEmployee(hij);
+         assertEquals(testEmployee, testPeriod.findEmployee("testEmployee"));
+     }
+     
+     @Test
+     public void periodFindEmployeeWrongArgument(){
+         Person abc = new Person("abc");
+         Person def = new Person("def");
+         Person hij = new Person("hij");
+         testPeriod.addEmployee(abc);
+         testPeriod.addEmployee(testEmployee);
+         testPeriod.addEmployee(def);
+         testPeriod.addEmployee(hij);
+         assertEquals(null, testPeriod.findEmployee("cba"));
+     }
 }

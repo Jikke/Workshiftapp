@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package workshiftapp.workshiftapp;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +90,7 @@ public class Period {
     public void addEmployee(Person employee){
         this.employees.add(employee);
     }
+    
     
     public void addEmployees(){
         while(true){

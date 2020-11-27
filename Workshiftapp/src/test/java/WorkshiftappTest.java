@@ -120,7 +120,8 @@ public class WorkshiftappTest {
      public void personAddAndGetShiftTest(){
          Person testPerson = new Person("testPerson");
          testPerson.addShift("Tiistai2", "ilta");
-         assertEquals("ilta",testPerson.getShift("Tiistai2"));
+         int dayIndex = testPerson.getDayIndex("Tiistai2");
+         assertEquals("ilta",testPerson.getShift(dayIndex));
      }
      @Test
      public void periodGetDayProperArgument(){
@@ -154,5 +155,11 @@ public class WorkshiftappTest {
          testPeriod.addEmployee(def);
          testPeriod.addEmployee(hij);
          assertEquals(null, testPeriod.findEmployee("cba"));
+     }
+     
+     @Test
+     public void periodIsEmployeeFreeProperArgument(){
+         test.addShift
+         testPeriod.isEmployeeFree("test", dayName, neededShift);
      }
 }

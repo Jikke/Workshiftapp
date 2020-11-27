@@ -5,6 +5,8 @@
  */
 package ui;
 
+import domain.Period;
+import domain.Person;
 import ui.Menu;
 import java.util.*;
 
@@ -15,9 +17,13 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-
-        Menu menu = new Menu();
-        menu.display();
+        
+        Person test = new Person("test");
+        System.out.println(test.getDayIndex("Maanantai3"));
+        Period testPeriod = new Period();
+        
+//        Menu menu = new Menu();
+//        menu.display();
         //Period uusi = new Period();
         //uusi.addEmployees();
         //System.out.println(uusi.printEmployees());

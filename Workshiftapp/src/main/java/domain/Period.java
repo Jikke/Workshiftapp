@@ -230,23 +230,62 @@ public class Period {
         }
         return null;
     }
+    
+    public boolean isEmployeeFree(String employeeName, String dayName, String neededShift) {
+        if (neededShift.equals("aamu") || neededShift.equals("ilta") || neededShift.equals("yö")){
+          if (this.findEmployee(employeeName) != null) {
+            if (this.findDay(dayName) != null) {
+              int indexOfToday =  this.findEmployee(employeeName).getDayIndex(dayName);
+              String todaysShift = this.findEmployee(employeeName).getShift(indexOfToday);
+              String yesterdaysShift = this.findEmployee(employeeName).getShift(indexOfToday-1);
+              String tomorrowsShift = this.findEmployee(employeeName).getShift(indexOfToday+1);
+              
+              
+              
+                //tarve aamuvuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut ilta- tai yövuorossa
+                if(neededShift.equals("aamu") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !yesterdaysShift.equals("ilta")){
+                  return true;
+                }
+              
+                //tarve iltavuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut yövuorossa tai huomenna aamuvuorossa
+                if(neededShift.equals("ilta") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !tomorrowsShift.equals("aamu")){
+                  return true;
+                }
+              
+                //tarve yövuoroon, pitää olla tänään vapaalla ja huomenna ei saa olla aamuvuorossa tai iltavuorossa
+                if(neededShift.equals("yö") && todaysShift.equals("vapaa") && !tomorrowsShift.equals("aamu") && !tomorrowsShift.equals("ilta")){
+                  return true;
+                }
+            }
+        }    
+    }
+        return false;
+    }    
 
-    public void checkEmployee() {
+    public void checkEmployee(String employeeName, String dayName) {
         System.out.println("Anna tarkasteltavan työntekijän nimi:");
-        String employeeName = scan.nextLine();
+//        String employeeName = scan.nextLine();
         if (this.findEmployee(employeeName) != null) {
             System.out.println("Anna tarkasteltavan päivän nimi:");
-            String dayName = scan.nextLine();
+//            String dayName = scan.nextLine();
             if (this.findDay(dayName) != null) {
-                System.out.println(this.findEmployee(employeeName).getShift(dayName));
+                int indexOfToday =  this.findEmployee(employeeName).getDayIndex(dayName);
+                System.out.println(this.findEmployee(employeeName).getShift(indexOfToday));
             }
         } else {
             System.out.println("Kyseistä työntekijää ei löydy.");
         }
     }
-    //public Boolean checkAvailability(String name){
-
-    //}
+    
+//    public Boolean checkAvailability(String name){
+//        if(this.findEmployee(name)!=null){
+//            
+//        } else {
+//            return false;
+//        }
+//    }
+    
+    
     @Override
     public String toString() {
         ArrayList<Day> days = this.getDays();

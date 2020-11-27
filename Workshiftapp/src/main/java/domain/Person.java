@@ -5,7 +5,10 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 /**
  *
@@ -14,12 +17,12 @@ import java.util.HashMap;
 public class Person {
 
     private final String name;
-    private HashMap<String, String> shifts;
+    private LinkedHashMap<String, String> shifts;
 
     //konstruktori
     public Person(String name) {
         this.name = name;
-        this.shifts = new HashMap<>();
+        this.shifts = new LinkedHashMap<>();
         shifts.put("Maanantai1", "vapaa");
         shifts.put("Tiistai1", "vapaa");
         shifts.put("Keskiviikko1", "vapaa");
@@ -48,11 +51,23 @@ public class Person {
     }
 
     public void addShift(String day, String shift) {
-        shifts.replace(day, shift);
+        this.shifts.replace(day, shift);
     }
 
-    public String getShift(String day) {
-        return shifts.get(day);
+    public String getShift(int index) {
+        return this.shifts.get(index);
+    }
+    
+    public int getDayIndex(String dayName) {
+        
+        Set keySet = this.shifts.keySet();
+        ArrayList<String> keyArray = new ArrayList<>(keySet);
+        for(String keys : keyArray){
+        if(keys.equals(dayName)){
+            return keyArray.indexOf(keys);
+        }
+    }
+        return -1; 
     }
 
 }

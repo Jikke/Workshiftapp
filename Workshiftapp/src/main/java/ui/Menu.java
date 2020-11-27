@@ -71,7 +71,7 @@ default:
     }
     
     public void checkEmployee(){
-        currentPeriod.checkEmployee();
+        currentPeriod.checkEmployee("asd","sad");
         this.display();
         
     }

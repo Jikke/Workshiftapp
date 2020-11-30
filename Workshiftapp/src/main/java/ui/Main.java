@@ -18,12 +18,9 @@ public class Main {
 
     public static void main(String[] args) {
         
-        Person test = new Person("test");
-        System.out.println(test.getDayIndex("Maanantai3"));
-        Period testPeriod = new Period();
-        
-//        Menu menu = new Menu();
-//        menu.display();
+        Menu menu = new Menu();
+        menu.init();
+        menu.display();
         //Period uusi = new Period();
         //uusi.addEmployees();
         //System.out.println(uusi.printEmployees());

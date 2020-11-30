@@ -5,19 +5,20 @@
  */
 package dao;
 
-import domain.Period;
+import domain.Day;
 import java.util.List;
 
 /**
  *
  * @author jeoleivo
  */
-//public interface PeriodDao {
-//    
-//    Period create(Period user) throws Exception;
-//
-//    Period findByUsername(String username);
-//
-//    List<User> getAll();
-//    
-//}
+public interface DayDao {
+    
+    Day create(Day day) throws Exception;
+
+    Day findByName(String dayName);
+
+    List<Day> getAll();
+    
+}
+

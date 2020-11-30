@@ -5,8 +5,11 @@
  */
 package ui;
 
+import dao.FileDayDao;
+import dao.FilePersonDao;
 import java.util.*;
 import domain.Period;
+import java.io.FileInputStream;
 
 /**
  *
@@ -16,6 +19,24 @@ public class Menu {
     
     private Scanner input = new Scanner(System.in);
     private Period currentPeriod;
+    
+    public void init(){
+        try{
+        Properties properties = new Properties();
+
+        properties.load(new FileInputStream("config.properties"));
+        
+        String personFile = properties.getProperty("personFile");
+        String dayFile = properties.getProperty("dayFile");
+            
+        FilePersonDao personDao = new FilePersonDao(personFile);
+        FileDayDao dayDao = new FileDayDao(dayFile, personDao);
+        //todoService = new TodoService(todoDao, userDao);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     public void display() {
     System.out.println("-- Valikko --");

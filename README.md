@@ -1,6 +1,10 @@
 # Workshiftapp
 Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelua. Sovelluksella luodaan työjakso, johon lisätään työpäivien vuoroihin työntekijöitä.
 
+## Julkaisut
+### Ensimmäinen julkaisu
+[Workshiftapp-1.0](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Dokumentaatio
 [vaatimusmaarittely.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)\
 [tyoaikataulukko.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)\
@@ -13,3 +17,7 @@ Testit suoritetaan komennolla \
 Testikattavuusraportti luodaan komennolla\
 ```mvn jacoco:report```\
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+### Suoritus
+Suoritus komennolla \
+```java -jar Workshiftapp-1.0.jar```

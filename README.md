@@ -18,6 +18,11 @@ Testikattavuusraportti luodaan komennolla\
 ```mvn jacoco:report```\
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
 
-### Suoritus
+### Suoritettavan jarin generointi
+Komento \
+```mvn package```
+
+generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSHOT.jar__ \
+
 Suoritus komennolla \
-```java -jar Workshiftapp-1.0.jar```
+```java -jar Workshiftapp-1.0-SNAPSHOT.jar```

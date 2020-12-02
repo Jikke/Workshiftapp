@@ -18,17 +18,18 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
    - Työntekijän vuoron tarkastelu
    - Poistu
 
-## Perusversion tarjoama toiminnallisuus
+## Sovelluksen tarjoama toiminnallisuus
 
 ### Uuden työjakson luonti
 
-Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu- ja iltavuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
+- \[x] (viikko 5) Jakson luonnin yhteydessä pyydetään minimityöntekijävaatimukset kullekin vuorolle. 
 
+Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu-, ilta-, yövuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
 
-Seuraavaksi työjakson luonnissa luodaan _työntekijä_ -oliot tälle työjaksolle seuraavasti:
-    
-   - Annetaan työntekijän nimi
-   
+### Uusien työntekijöiden luonti
+
+   - \[x] Luodaan _työntekijä_ -oliot tälle työjaksolle antamalla työntekijän nimi.
+  
 ### Työntekijän lisääminen vuoroihin
 
    - \[x] Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
@@ -52,16 +53,16 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
 ### Tärkeimmät laajennukset
 
    - \[x] Yövuoron lisäys vuorokausiolioon
-   - \[ ] Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
-   - \[ ] Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
-   - \[ ] Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
+   - \[x] (viikko 5) Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
+   - \[x] (viikko 5) Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
+   - \[x] (viikko 5) Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
    - \[ ] Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
    - \[ ] Työntekijöille määritellään vapaapäivien määrä
    
 ### Tärkeimpiä seuraavat laajennukset
    
    - \[ ] Graafinen käyttöliittymä
-   - \[ ] Työjakson muokkaus luomisen jälkeen
+   - \[x] (viikko 5) Työjakson muokkaus luomisen jälkeen
    - \[ ] Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
    - \[ ] Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
    - \[ ] Työjakson pituuden vapaavalintaisuus

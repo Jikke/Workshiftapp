@@ -14,22 +14,40 @@ import java.util.ArrayList;
 public class Day {
 
     private final String weekday;
-    private ArrayList<String> morning;
-    private ArrayList<String> evening;
-    private ArrayList<String> night;
-    private ArrayList<String> dayoff;
+    private final ArrayList<String> morning;
+    private final int morningMin;
+    private final ArrayList<String> evening;
+    private final int eveningMin;
+    private final ArrayList<String> night;
+    private final int nightMin;
+    private final ArrayList<String> dayoff;
 
     //konstruktori
-    public Day(String dayname) {
+    public Day(String dayname, int morningMin, int eveningMin, int nightMin) {
         this.weekday = dayname;
         this.morning = new ArrayList<>();
+        this.morningMin = morningMin;
         this.evening = new ArrayList<>();
+        this.eveningMin = eveningMin;
         this.night = new ArrayList<>();
+        this.nightMin = nightMin;
         this.dayoff = new ArrayList<>();
     }
 
     public String getWeekday() {
         return this.weekday;
+    }
+    
+    public int getMorningMin() {
+        return this.morningMin;
+    }
+    
+    public int getEveningMin() {
+        return this.eveningMin;
+    }
+    
+    public int getNightMin() {
+        return this.nightMin;
     }
 
     public void setShift(String name, String shift) {
@@ -54,43 +72,124 @@ public class Day {
         }
 
     }
+    //poistaa nykyisen vuoron
+    public boolean removeShift(String employeeName){
+       String currenShift = this.findEmployeeShift(employeeName);
+       if(currenShift!=null){
+        if (currenShift.equals("aamu")) {
+           for (int i = 0; i < this.morning.size(); i++) {
+            if(employeeName.equals(this.morning.get(i))){
+               this.morning.remove(i);
+               return true;
+            }
+        }
+           
+        }
+        if (currenShift.equals("ilta")) {
+            for (int i = 0; i < this.evening.size(); i++) {
+            if(employeeName.equals(this.evening.get(i))){
+               this.evening.remove(i);
+               return true;
+            }
+        }
+        }    
+        if (currenShift.equals("yö")) {
+            for (int i = 0; i < this.night.size(); i++) {
+            if(employeeName.equals(this.night.get(i))){
+               this.night.remove(i);
+               return true;
+            }
+        }
+        }    
+        if (currenShift.equals("vapaa")) {
+            for (int i = 0; i < this.dayoff.size(); i++) {
+            if(employeeName.equals(this.dayoff.get(i))){
+               this.dayoff.remove(i);
+               return true;
+            }
+        }
+        }
+        }
+            return false;
+        } 
+    //palauttaa työntekijän tämänhetkisen vuoron
+    public String findEmployeeShift(String employeeName){
+        for (int i = 0; i < this.morning.size(); i++) {
+            if(employeeName.equals(this.morning.get(i))){
+//   ei pitäisi poistaa mitään..            this.morning.remove(i);
+               return "aamu";
+            }
+        }    
+        for (int i = 0; i < this.evening.size(); i++) {
+            if(employeeName.equals(this.evening.get(i))){
+//               this.evening.remove(i);
+               return "ilta";
+            }
+        }    
+        for (int i = 0; i < this.night.size(); i++) {
+            if(employeeName.equals(this.night.get(i))){
+//               this.night.remove(i);
+               return "yö";
+            }
+        }    
+        for (int i = 0; i < this.dayoff.size(); i++) {
+            if(employeeName.equals(this.dayoff.get(i))){
+//               this.dayoff.remove(i);
+               return "vapaa";
+            }
+        } 
+        return null;    
+    }    
 
     //palauttaa listan aamuvuoron työntekijöistä
     public ArrayList<String> getMorning() {
-        ArrayList<String> morningList = new ArrayList<>();
-        for (int i = 0; i < this.morning.size(); i++) {
-            morningList.add(this.morning.get(i));
-        }
-        return morningList;
+        return this.morning;
     }
 
     //palauttaa listan iltavuoron työntekijöistä
     public ArrayList<String> getEvening() {
-        ArrayList<String> eveningList = new ArrayList<>();
-        for (int i = 0; i < this.evening.size(); i++) {
-            eveningList.add(this.evening.get(i));
-        }
-        return eveningList;
+        return this.evening;
     }
 
     //palauttaa listan yövuoron työntekijöistä
     public ArrayList<String> getNight() {
-        ArrayList<String> nightList = new ArrayList<>();
-        for (int i = 0; i < this.night.size(); i++) {
-            nightList.add(this.night.get(i));
-        }
-        return nightList;
+        return this.night;
     }
 
     //palauttaa listan vapaapäivän työntekijöistä
     public ArrayList<String> getDayoff() {
-        ArrayList<String> dayoffList = new ArrayList<>();
-        for (int i = 0; i < this.dayoff.size(); i++) {
-            dayoffList.add(this.dayoff.get(i));
-        }
-        return dayoffList;
+        return this.dayoff;
     }
 
+    public int howManyMoreToShift(String shift){
+        switch(shift){
+            case "aamu":
+            if(this.getMorning().size()<this.morningMin){
+               int thisManyMore =  this.morningMin - this.getMorning().size();
+               return thisManyMore;
+            } else {
+               return -1; 
+            }
+            case "ilta":
+            if(this.getEvening().size()<this.eveningMin){
+               int thisManyMore =  this.eveningMin - this.getEvening().size();
+               return thisManyMore;
+            } else {
+               return -1; 
+            }
+            case "yö":
+            if(this.getNight().size()<this.nightMin){
+               int thisManyMore =  this.nightMin - this.getNight().size();
+               return thisManyMore;
+            } else {
+               return -1; 
+            }
+            default:
+            System.out.println("Virheellinen syöte.");
+            return -1;
+        }
+    }
+    
     public String toString() {
         return this.getWeekday();
     }

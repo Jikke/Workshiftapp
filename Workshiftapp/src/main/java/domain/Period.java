@@ -20,28 +20,28 @@ public class Period {
     Scanner scan = new Scanner(System.in);
 
     //kostruktori luo 21 päivää pitkän työjakson ja tyhjän työntekijälistan
-    public Period() {
-        Day day1 = new Day("Maanantai1");
-        Day day2 = new Day("Tiistai1");
-        Day day3 = new Day("Keskiviikko1");
-        Day day4 = new Day("Torstai1");
-        Day day5 = new Day("Perjantai1");
-        Day day6 = new Day("Lauantai1");
-        Day day7 = new Day("Sunnuntai1");
-        Day day8 = new Day("Maanantai2");
-        Day day9 = new Day("Tiistai2");
-        Day day10 = new Day("Keskiviikko2");
-        Day day11 = new Day("Torstai2");
-        Day day12 = new Day("Perjantai2");
-        Day day13 = new Day("Lauantai2");
-        Day day14 = new Day("Sunnuntai2");
-        Day day15 = new Day("Maanantai3");
-        Day day16 = new Day("Tiistai3");
-        Day day17 = new Day("Keskiviikko3");
-        Day day18 = new Day("Torstai3");
-        Day day19 = new Day("Perjantai3");
-        Day day20 = new Day("Lauantai3");
-        Day day21 = new Day("Sunnuntai3");
+    public Period(int morningMin, int eveningMin, int nightMin) {
+        Day day1 = new Day("Maanantai1", morningMin, eveningMin, nightMin);
+        Day day2 = new Day("Tiistai1", morningMin, eveningMin, nightMin);
+        Day day3 = new Day("Keskiviikko1", morningMin, eveningMin, nightMin);
+        Day day4 = new Day("Torstai1", morningMin, eveningMin, nightMin);
+        Day day5 = new Day("Perjantai1", morningMin, eveningMin, nightMin);
+        Day day6 = new Day("Lauantai1", morningMin, eveningMin, nightMin);
+        Day day7 = new Day("Sunnuntai1", morningMin, eveningMin, nightMin);
+        Day day8 = new Day("Maanantai2", morningMin, eveningMin, nightMin);
+        Day day9 = new Day("Tiistai2", morningMin, eveningMin, nightMin);
+        Day day10 = new Day("Keskiviikko2", morningMin, eveningMin, nightMin);
+        Day day11 = new Day("Torstai2", morningMin, eveningMin, nightMin);
+        Day day12 = new Day("Perjantai2", morningMin, eveningMin, nightMin);
+        Day day13 = new Day("Lauantai2", morningMin, eveningMin, nightMin);
+        Day day14 = new Day("Sunnuntai2", morningMin, eveningMin, nightMin);
+        Day day15 = new Day("Maanantai3", morningMin, eveningMin, nightMin);
+        Day day16 = new Day("Tiistai3", morningMin, eveningMin, nightMin);
+        Day day17 = new Day("Keskiviikko3", morningMin, eveningMin, nightMin);
+        Day day18 = new Day("Torstai3", morningMin, eveningMin, nightMin);
+        Day day19 = new Day("Perjantai3", morningMin, eveningMin, nightMin);
+        Day day20 = new Day("Lauantai3", morningMin, eveningMin, nightMin);
+        Day day21 = new Day("Sunnuntai3", morningMin, eveningMin, nightMin);
 
         this.days = new ArrayList<>();
         this.days.add(day1);
@@ -90,118 +90,71 @@ public class Period {
         this.employees.add(employee);
     }
 
-    public void addEmployees() {
-        while (true) {
-            System.out.println("Luo työntekijä antamalla nimi. Tyhjä syöte lopettaa.");
-            String employeeName = scan.nextLine();
-            if (employeeName.equals("")) {
-                System.out.println("Lisätty seuraavat työntekijät jaksolle: \n" + this.printEmployees());
-                break;
-            }
-            Person newEmployee = new Person(employeeName);
-            this.addEmployee(newEmployee);
-            for (Day day : days) {
-                setEmployeeDayoff(day, employeeName);
-            }
-        }
-    }
-
+//    public void addEmployees() {
+//        System.out.println("Luo työntekijä antamalla nimi. Tyhjä syöte lopettaa.");
+//        while (true) {
+//
+//            String employeeName = scan.nextLine();
+//            if (employeeName.equals("")) {
+//                System.out.println("Lisätty seuraavat työntekijät jaksolle: \n" + this.printEmployees());
+//                break;
+//            } else if (this.findEmployee(employeeName) != null) {
+//                System.out.println("Kyseinen työntekijä on jo olemassa");
+//            } else {
+//                Person newEmployee = new Person(employeeName);
+//                this.addEmployee(newEmployee);
+//                for (Day day : days) {
+//                    setEmployeeDayoff(day, employeeName);
+//                }
+//            }
+//        }
+//    }
     public void setEmployeeMorning(Day currentDay, String employeeName) {
         //tarkistaa, löytyykö kyseinen nimi työntekijöiden listalta
         if (findEmployee(employeeName) != null) {
-            currentDay.setShift(employeeName, "aamu");
-            this.findEmployee(employeeName).addShift(currentDay.toString(), "aamu");
+            this.findEmployee(employeeName).addShift(currentDay, "aamu");
         } else {
             System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+        }
+        int thisManyMore = currentDay.howManyMoreToShift("aamu");
+        if (thisManyMore != -1) {
+            System.out.println("Aamuvuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
         }
     }
 
     public void setEmployeeEvening(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
-            currentDay.setShift(employeeName, "ilta");
-            this.findEmployee(employeeName).addShift(currentDay.toString(), "ilta");
+            this.findEmployee(employeeName).addShift(currentDay, "ilta");
         } else {
             System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+        }
+        int thisManyMore = currentDay.howManyMoreToShift("ilta");
+        if (thisManyMore != -1) {
+            System.out.println("Iltavuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
         }
     }
 
     public void setEmployeeNight(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
-            currentDay.setShift(employeeName, "yö");
-            this.findEmployee(employeeName).addShift(currentDay.toString(), "yö");
+            this.findEmployee(employeeName).addShift(currentDay, "yö");
         } else {
             System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+        }
+        int thisManyMore = currentDay.howManyMoreToShift("yö");
+        if (thisManyMore != -1) {
+            System.out.println("Yövuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
         }
     }
 
     public void setEmployeeDayoff(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
-            currentDay.setShift(employeeName, "vapaa");
+            this.findEmployee(employeeName).addShift(currentDay, "vapaa");
             //vapaa on työntekijän vakiovuoro, kun vuoroa ei olla muokattu
         } else {
             System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
-        }
-    }
-
-    public void setEmployees() {
-
-        for (Day currentDay : this.getDays()) {
-            String employeeName = "placeholder";
-
-            //aamuvuoron loop 
-            while (true) {
-                System.out.println("Lisää päivän " + currentDay + " aamuvuorooon haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
-                employeeName = scan.nextLine();
-                if (employeeName.equals("") || employeeName.equals("x")) {
-                    break;
-                }
-                setEmployeeMorning(currentDay, employeeName);
-            }
-            if (employeeName.equals("x")) {
-                break;
-            }
-            //iltavuoron loop
-            while (true) {
-                System.out.println("Lisää päivän " + currentDay + " iltavuorooon haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
-                employeeName = scan.nextLine();
-                if (employeeName.equals("") || employeeName.equals("x")) {
-                    break;
-                }
-                setEmployeeEvening(currentDay, employeeName);
-            }
-            if (employeeName.equals("x")) {
-                break;
-            }
-            //yövuoron loop
-            while (true) {
-                System.out.println("Lisää päivän " + currentDay + " yövuoroon haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
-                employeeName = scan.nextLine();
-                if (employeeName.equals("") || employeeName.equals("x")) {
-                    break;
-                }
-                setEmployeeNight(currentDay, employeeName);
-            }
-            if (employeeName.equals("x")) {
-                break;
-            }
-            //vapaapäivän loop
-            while (true) {
-                System.out.println("Lisää päivän " + currentDay + " vapaapäivälle haluamasi henkilöt. Tyhjä syöte lopettaa. Syöte x lopettaa vuorojen muokkauksen.");
-                employeeName = scan.nextLine();
-                if (employeeName.equals("") || employeeName.equals("x")) {
-                    break;
-                }
-                setEmployeeDayoff(currentDay, employeeName);
-            }
-            //vapaapäivän loop päättyy
-            //poistu kokonaan setEmploees loopista syotteella x   
-            if (employeeName.equals("x")) {
-                break;
-            }
-
         }
     }
 
@@ -215,7 +168,7 @@ public class Period {
 
     public String printEmployees() {
         ArrayList<Person> employeeObjects = this.getEmployees();
-        String employeeString = "";
+        String employeeString = "\n";
         for (Person employee : employeeObjects) {
             employeeString += (employee.getName() + "\n");
         }
@@ -230,53 +183,52 @@ public class Period {
         }
         return null;
     }
-    
-    public boolean isEmployeeFree(String employeeName, String dayName, String neededShift) {
-        if (neededShift.equals("aamu") || neededShift.equals("ilta") || neededShift.equals("yö")){
-          if (this.findEmployee(employeeName) != null) {
-            if (this.findDay(dayName) != null) {
-              int indexOfToday =  this.findEmployee(employeeName).getDayIndex(dayName);
-              String todaysShift = this.findEmployee(employeeName).getShift(indexOfToday);
-              String yesterdaysShift = this.findEmployee(employeeName).getShift(indexOfToday-1);
-              String tomorrowsShift = this.findEmployee(employeeName).getShift(indexOfToday+1);
-              
-              
-              
-                //tarve aamuvuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut ilta- tai yövuorossa
-                if(neededShift.equals("aamu") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !yesterdaysShift.equals("ilta")){
-                  return true;
-                }
-              
-                //tarve iltavuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut yövuorossa tai huomenna aamuvuorossa
-                if(neededShift.equals("ilta") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !tomorrowsShift.equals("aamu")){
-                  return true;
-                }
-              
-                //tarve yövuoroon, pitää olla tänään vapaalla ja huomenna ei saa olla aamuvuorossa tai iltavuorossa
-                if(neededShift.equals("yö") && todaysShift.equals("vapaa") && !tomorrowsShift.equals("aamu") && !tomorrowsShift.equals("ilta")){
-                  return true;
-                }
-            }
-        }    
-    }
-        return false;
-    }    
 
-    public void checkEmployee(String employeeName, String dayName) {
-        System.out.println("Anna tarkasteltavan työntekijän nimi:");
-//        String employeeName = scan.nextLine();
-        if (this.findEmployee(employeeName) != null) {
-            System.out.println("Anna tarkasteltavan päivän nimi:");
-//            String dayName = scan.nextLine();
-            if (this.findDay(dayName) != null) {
-                int indexOfToday =  this.findEmployee(employeeName).getDayIndex(dayName);
-                System.out.println(this.findEmployee(employeeName).getShift(indexOfToday));
+    //miten tarkistaa ettei käsittelyssä ole eka tai vika päivä, koska indexOfToday rikkoo muuten metodin
+    public boolean isEmployeeAvailable(Person employee, Day today, String neededShift) {
+        if (neededShift.equals("aamu") || neededShift.equals("ilta") || neededShift.equals("yö")) {
+            if (this.findEmployee(employee.getName()) != null) {
+                if (this.findDay(today.getWeekday()) != null) {
+                    int indexOfToday = employee.getDayIndex(today.toString());
+                    String todaysShift = employee.getShiftwIndex(indexOfToday);
+                    String yesterdaysShift = null;
+                    String tomorrowsShift = null;
+                    //mikäli ensimmäinen päivä
+                    if (indexOfToday != 0) {
+                        yesterdaysShift = employee.getShiftwIndex(indexOfToday - 1);
+                    } else {
+                        yesterdaysShift = employee.getShiftwIndex(indexOfToday);
+                    }
+                    //mikäli viimeinen päivä
+                    if (indexOfToday != 20) {
+                        tomorrowsShift = employee.getShiftwIndex(indexOfToday + 1);
+                    } else {
+                        tomorrowsShift = employee.getShiftwIndex(indexOfToday);
+                    }
+                    //tarve aamuvuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut ilta- tai yövuorossa
+                    if (neededShift.equals("aamu") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !yesterdaysShift.equals("ilta")) {
+                        return true;
+                    }
+
+                    //tarve iltavuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut yövuorossa tai huomenna aamuvuorossa
+                    if (neededShift.equals("ilta") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !tomorrowsShift.equals("aamu")) {
+                        return true;
+                    }
+
+                    //tarve yövuoroon, pitää olla tänään vapaalla ja huomenna ei saa olla aamuvuorossa tai iltavuorossa
+                    if (neededShift.equals("yö") && todaysShift.equals("vapaa") && !tomorrowsShift.equals("aamu") && !tomorrowsShift.equals("ilta")) {
+                        return true;
+                    }
+                }
             }
-        } else {
-            System.out.println("Kyseistä työntekijää ei löydy.");
         }
+        return false;
     }
-    
+
+    public String checkEmployee(String employeeName, String dayName) {
+        return this.findEmployee(employeeName).getShift(dayName);
+    }
+
 //    public Boolean checkAvailability(String name){
 //        if(this.findEmployee(name)!=null){
 //            
@@ -284,44 +236,4 @@ public class Period {
 //            return false;
 //        }
 //    }
-    
-    
-    @Override
-    public String toString() {
-        ArrayList<Day> days = this.getDays();
-        String wholePeriod = "";
-        //looppaa läpi kaikkien päivien
-        for (Day currentDay : days) {
-            //luo vuoroista omat String-listat jokaisen uuden päivän tarkastelun alussa
-            ArrayList<String> morningList = currentDay.getMorning();
-            ArrayList<String> eveningList = currentDay.getEvening();
-            ArrayList<String> nightList = currentDay.getNight();
-            ArrayList<String> dayoffList = currentDay.getDayoff();
-            //Luo lopulliseen String-olioon lisättävät String-oliot vuorojen työtenkijöistä
-            String morning = "   Aamuvuorossa: ";
-            String evening = "   Iltavuorossa: ";
-            String night = "   Yövuorossa: ";
-            String dayoff = "   Vapaalla:";
-            //silmukoi tämän päivän kunkin vuoron listojen läpi ja lisää työntekijöiden nimet vuorojen String-olioihin
-            for (int i = 0; i < currentDay.getMorning().size(); i++) {
-                morning += (" " + morningList.get(i));
-            }
-            morning += "\n";
-            for (int i = 0; i < currentDay.getEvening().size(); i++) {
-                evening += (" " + eveningList.get(i));
-            }
-            for (int i = 0; i < currentDay.getNight().size(); i++) {
-                night += (" " + nightList.get(i));
-            }
-            night += "\n";
-            for (int i = 0; i < currentDay.getDayoff().size(); i++) {
-                dayoff += (" " + dayoffList.get(i));
-            }
-            dayoff += "\n";
-            //kokoa lopulliseen String-olioon tämän päivän osalta kerätyt työntekijät        
-            wholePeriod += ("\n" + currentDay.getWeekday() + ": \n" + morning + " \n" + evening + " \n" + night + " \n" + dayoff);
-        }
-        return wholePeriod;
-    }
-
 }

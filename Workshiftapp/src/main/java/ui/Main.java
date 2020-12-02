@@ -19,7 +19,6 @@ public class Main {
     public static void main(String[] args) {
         
         Menu menu = new Menu();
-        menu.init();
         menu.display();
         //Period uusi = new Period();
         //uusi.addEmployees();

@@ -50,24 +50,32 @@ public class Person {
         return this.name;
     }
 
-    public void addShift(String day, String shift) {
-        this.shifts.replace(day, shift);
+    public void addShift(Day day, String shift) {
+        this.shifts.replace(day.toString(), shift);
+        day.removeShift(this.getName());
+        day.setShift(this.getName(), shift);
     }
 
-    public String getShift(int index) {
-        return this.shifts.get(index);
+    public String getShift(String dayName) {
+        return this.shifts.get(dayName);
     }
-    
+
+    public String getShiftwIndex(int index) {
+
+        String shift = (new ArrayList<>(this.shifts.values())).get(index);
+        return shift;
+
+    }
+
     public int getDayIndex(String dayName) {
-        
+
         Set keySet = this.shifts.keySet();
         ArrayList<String> keyArray = new ArrayList<>(keySet);
-        for(String keys : keyArray){
-        if(keys.equals(dayName)){
-            return keyArray.indexOf(keys);
+        for (String keys : keyArray) {
+            if (keys.equals(dayName)) {
+                return keyArray.indexOf(keys);
+            }
         }
+        return -1;
     }
-        return -1; 
-    }
-
 }

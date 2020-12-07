@@ -109,53 +109,41 @@ public class Period {
 //            }
 //        }
 //    }
-    public void setEmployeeMorning(Day currentDay, String employeeName) {
+    public boolean setEmployeeMorning(Day currentDay, String employeeName) {
         //tarkistaa, löytyykö kyseinen nimi työntekijöiden listalta
         if (findEmployee(employeeName) != null) {
             this.findEmployee(employeeName).addShift(currentDay, "aamu");
-        } else {
-            System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+            return true;
         }
-        int thisManyMore = currentDay.howManyMoreToShift("aamu");
-        if (thisManyMore != -1) {
-            System.out.println("Aamuvuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
-        }
+        return false;
     }
 
-    public void setEmployeeEvening(Day currentDay, String employeeName) {
+    public boolean setEmployeeEvening(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
             this.findEmployee(employeeName).addShift(currentDay, "ilta");
-        } else {
-            System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+            return true;
         }
-        int thisManyMore = currentDay.howManyMoreToShift("ilta");
-        if (thisManyMore != -1) {
-            System.out.println("Iltavuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
-        }
+        return false;
     }
 
-    public void setEmployeeNight(Day currentDay, String employeeName) {
+    public boolean setEmployeeNight(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
             this.findEmployee(employeeName).addShift(currentDay, "yö");
-        } else {
-            System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+            return true;
         }
-        int thisManyMore = currentDay.howManyMoreToShift("yö");
-        if (thisManyMore != -1) {
-            System.out.println("Yövuoroon tarvitaan vielä " + thisManyMore + " työntekijää!");
-        }
+        return false;
     }
 
-    public void setEmployeeDayoff(Day currentDay, String employeeName) {
+    public boolean setEmployeeDayoff(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
             this.findEmployee(employeeName).addShift(currentDay, "vapaa");
             //vapaa on työntekijän vakiovuoro, kun vuoroa ei olla muokattu
-        } else {
-            System.out.println("Antamaasi nimeä ei löydy työntekijälistalta.");
+            return true;
         }
+        return false;
     }
 
     public ArrayList<Person> getEmployees() {
@@ -186,42 +174,37 @@ public class Period {
 
     //miten tarkistaa ettei käsittelyssä ole eka tai vika päivä, koska indexOfToday rikkoo muuten metodin
     public boolean isEmployeeAvailable(Person employee, Day today, String neededShift) {
-        if (neededShift.equals("aamu") || neededShift.equals("ilta") || neededShift.equals("yö")) {
-            if (this.findEmployee(employee.getName()) != null) {
-                if (this.findDay(today.getWeekday()) != null) {
-                    int indexOfToday = employee.getDayIndex(today.toString());
-                    String todaysShift = employee.getShiftwIndex(indexOfToday);
-                    String yesterdaysShift = null;
-                    String tomorrowsShift = null;
-                    //mikäli ensimmäinen päivä
-                    if (indexOfToday != 0) {
-                        yesterdaysShift = employee.getShiftwIndex(indexOfToday - 1);
-                    } else {
-                        yesterdaysShift = employee.getShiftwIndex(indexOfToday);
-                    }
-                    //mikäli viimeinen päivä
-                    if (indexOfToday != 20) {
-                        tomorrowsShift = employee.getShiftwIndex(indexOfToday + 1);
-                    } else {
-                        tomorrowsShift = employee.getShiftwIndex(indexOfToday);
-                    }
-                    //tarve aamuvuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut ilta- tai yövuorossa
-                    if (neededShift.equals("aamu") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !yesterdaysShift.equals("ilta")) {
-                        return true;
-                    }
-
-                    //tarve iltavuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut yövuorossa tai huomenna aamuvuorossa
-                    if (neededShift.equals("ilta") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !tomorrowsShift.equals("aamu")) {
-                        return true;
-                    }
-
-                    //tarve yövuoroon, pitää olla tänään vapaalla ja huomenna ei saa olla aamuvuorossa tai iltavuorossa
-                    if (neededShift.equals("yö") && todaysShift.equals("vapaa") && !tomorrowsShift.equals("aamu") && !tomorrowsShift.equals("ilta")) {
-                        return true;
-                    }
-                }
-            }
+        int indexOfToday = employee.getDayIndex(today.getWeekday());
+        String todaysShift = employee.getShiftwIndex(indexOfToday);
+        String yesterdaysShift = null;
+        String tomorrowsShift = null;
+        //mikäli ensimmäinen päivä
+        if (indexOfToday != 0) {
+            yesterdaysShift = employee.getShiftwIndex(indexOfToday - 1);
+        } else {
+            yesterdaysShift = employee.getShiftwIndex(indexOfToday);
         }
+        //mikäli viimeinen päivä
+        if (indexOfToday != 20) {
+            tomorrowsShift = employee.getShiftwIndex(indexOfToday + 1);
+        } else {
+            tomorrowsShift = employee.getShiftwIndex(indexOfToday);
+        }
+        //tarve aamuvuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut ilta- tai yövuorossa
+        if (neededShift.equals("aamu") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !yesterdaysShift.equals("ilta")) {
+            return true;
+        }
+
+        //tarve iltavuoroon, pitää olla tänään vapaalla ja eilen ei saa olla ollut yövuorossa tai huomenna aamuvuorossa
+        if (neededShift.equals("ilta") && todaysShift.equals("vapaa") && !yesterdaysShift.equals("yö") && !tomorrowsShift.equals("aamu")) {
+            return true;
+        }
+
+        //tarve yövuoroon, pitää olla tänään vapaalla ja huomenna ei saa olla aamuvuorossa tai iltavuorossa
+        if (neededShift.equals("yö") && todaysShift.equals("vapaa") && !tomorrowsShift.equals("aamu") && !tomorrowsShift.equals("ilta")) {
+            return true;
+        }
+
         return false;
     }
 
@@ -229,11 +212,4 @@ public class Period {
         return this.findEmployee(employeeName).getShift(dayName);
     }
 
-//    public Boolean checkAvailability(String name){
-//        if(this.findEmployee(name)!=null){
-//            
-//        } else {
-//            return false;
-//        }
-//    }
 }

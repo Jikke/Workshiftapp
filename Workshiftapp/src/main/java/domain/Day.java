@@ -168,25 +168,25 @@ public class Day {
                int thisManyMore =  this.morningMin - this.getMorning().size();
                return thisManyMore;
             } else {
-               return -1; 
+               return -2; 
             }
             case "ilta":
             if(this.getEvening().size()<this.eveningMin){
                int thisManyMore =  this.eveningMin - this.getEvening().size();
                return thisManyMore;
             } else {
-               return -1; 
+               return -2; 
             }
             case "yö":
             if(this.getNight().size()<this.nightMin){
                int thisManyMore =  this.nightMin - this.getNight().size();
                return thisManyMore;
             } else {
-               return -1; 
+               return -2; 
             }
             default:
             System.out.println("Virheellinen syöte.");
-            return -1;
+            return -2;
         }
     }
     

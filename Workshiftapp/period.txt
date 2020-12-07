@@ -1,0 +1,189 @@
+
+Maanantai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Tiistai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Keskiviikko1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Torstai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Perjantai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Lauantai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Sunnuntai1: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Maanantai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Tiistai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Keskiviikko2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Torstai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Perjantai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Lauantai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa:  asd 123
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo
+
+Sunnuntai2: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa:  Lasse Iivo
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: 123 asd
+
+Maanantai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Tiistai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Keskiviikko3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Torstai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Perjantai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Lauantai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd
+
+Sunnuntai3: 
+   Aamuvuorossa: 
+ 
+   Iltavuorossa: 
+ 
+   Yövuorossa: 
+ 
+   Vapaalla: Lasse Iivo 123 asd

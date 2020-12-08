@@ -19,7 +19,13 @@ public class Period {
     private ArrayList<Person> employees;
     Scanner scan = new Scanner(System.in);
 
-    //kostruktori luo 21 päivää pitkän työjakson ja tyhjän työntekijälistan
+    /**
+     * Kostruktori luo 21 päivää pitkän työjakson ja tyhjän työntekijälistan
+     *
+     * @param morningMin Aamuvuoron minimivahvuus
+     * @param eveningMin Iltavuoron minimivahvuus
+     * @param nightMin Yövuoron minimivahvuus
+     */
     public Period(int morningMin, int eveningMin, int nightMin) {
         Day day1 = new Day("Maanantai1", morningMin, eveningMin, nightMin);
         Day day2 = new Day("Tiistai1", morningMin, eveningMin, nightMin);
@@ -69,14 +75,21 @@ public class Period {
         this.employees = new ArrayList<>();
     }
 
+    /**
+     * @return Period-olion Day-oliot listana
+     */
     public ArrayList<Day> getDays() {
-        ArrayList<Day> dayList = new ArrayList<Day>();
+        ArrayList<Day> dayList = new ArrayList<>();
         for (int i = 0; i < this.days.size(); i++) {
             dayList.add(this.days.get(i));
         }
         return dayList;
     }
 
+    /**
+     * @param dayName Haettavan päivän nimi
+     * @return Löytynyt päivä tai null
+     */
     public Day findDay(String dayName) {
         for (int i = 0; i < this.days.size(); i++) {
             if (this.days.get(i).getWeekday().equals(dayName)) {
@@ -90,25 +103,11 @@ public class Period {
         this.employees.add(employee);
     }
 
-//    public void addEmployees() {
-//        System.out.println("Luo työntekijä antamalla nimi. Tyhjä syöte lopettaa.");
-//        while (true) {
-//
-//            String employeeName = scan.nextLine();
-//            if (employeeName.equals("")) {
-//                System.out.println("Lisätty seuraavat työntekijät jaksolle: \n" + this.printEmployees());
-//                break;
-//            } else if (this.findEmployee(employeeName) != null) {
-//                System.out.println("Kyseinen työntekijä on jo olemassa");
-//            } else {
-//                Person newEmployee = new Person(employeeName);
-//                this.addEmployee(newEmployee);
-//                for (Day day : days) {
-//                    setEmployeeDayoff(day, employeeName);
-//                }
-//            }
-//        }
-//    }
+    /**
+     * @param currentDay Päivä, jonka vuoroon työntekijä lisätään
+     * @param employeeName Lisättävän työntekijän nimi
+     * @return true tai false onnistumisen mukaan
+     */
     public boolean setEmployeeMorning(Day currentDay, String employeeName) {
         //tarkistaa, löytyykö kyseinen nimi työntekijöiden listalta
         if (findEmployee(employeeName) != null) {
@@ -118,6 +117,9 @@ public class Period {
         return false;
     }
 
+    /**
+     * @see setEmployeeMorning(Day currentDay, String employeeName)
+     */
     public boolean setEmployeeEvening(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
@@ -126,7 +128,9 @@ public class Period {
         }
         return false;
     }
-
+/**
+     * @see setEmployeeMorning(Day currentDay, String employeeName)
+     */
     public boolean setEmployeeNight(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
@@ -135,7 +139,9 @@ public class Period {
         }
         return false;
     }
-
+/**
+     * @see setEmployeeMorning(Day currentDay, String employeeName)
+     */
     public boolean setEmployeeDayoff(Day currentDay, String employeeName) {
 
         if (findEmployee(employeeName) != null) {
@@ -145,7 +151,9 @@ public class Period {
         }
         return false;
     }
-
+    /**
+     * @return Palauttaa listan Period-olioon lisätyistä työntekijöistä
+     */
     public ArrayList<Person> getEmployees() {
         ArrayList<Person> employeeList = new ArrayList<Person>();
         for (int i = 0; i < this.employees.size(); i++) {
@@ -154,6 +162,9 @@ public class Period {
         return employeeList;
     }
 
+     /**
+     * @return Palauttaa String-oliona Period-olioon lisätyt työntekijät
+     */
     public String printEmployees() {
         ArrayList<Person> employeeObjects = this.getEmployees();
         String employeeString = "\n";
@@ -163,6 +174,10 @@ public class Period {
         return employeeString;
     }
 
+    /**
+     * @param name Haettavan työntekijän nimi
+     * @return Löytynyt työntekijä tai null
+     */
     public Person findEmployee(String name) {
         for (int i = 0; i < this.employees.size(); i++) {
             if (this.employees.get(i).getName().equals(name)) {
@@ -172,7 +187,7 @@ public class Period {
         return null;
     }
 
-    //miten tarkistaa ettei käsittelyssä ole eka tai vika päivä, koska indexOfToday rikkoo muuten metodin
+    
     public boolean isEmployeeAvailable(Person employee, Day today, String neededShift) {
         int indexOfToday = employee.getDayIndex(today.getWeekday());
         String todaysShift = employee.getShiftwIndex(indexOfToday);

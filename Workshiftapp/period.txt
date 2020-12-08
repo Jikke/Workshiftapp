@@ -9,13 +9,13 @@ Maanantai1:
    Vapaalla: Lasse Iivo 123 asd
 
 Tiistai1: 
-   Aamuvuorossa: 
+   Aamuvuorossa:  Lasse Iivo
  
    Iltavuorossa: 
  
    Yövuorossa: 
  
-   Vapaalla: Lasse Iivo 123 asd
+   Vapaalla: 123 asd
 
 Keskiviikko1: 
    Aamuvuorossa: 
@@ -72,13 +72,13 @@ Maanantai2:
    Vapaalla: Lasse Iivo 123 asd
 
 Tiistai2: 
-   Aamuvuorossa: 
+   Aamuvuorossa:  Lasse
  
-   Iltavuorossa: 
+   Iltavuorossa:  Iivo
  
    Yövuorossa: 
  
-   Vapaalla: Lasse Iivo 123 asd
+   Vapaalla: 123 asd
 
 Keskiviikko2: 
    Aamuvuorossa: 
@@ -110,20 +110,20 @@ Perjantai2:
 Lauantai2: 
    Aamuvuorossa: 
  
-   Iltavuorossa:  asd 123
+   Iltavuorossa: 
  
    Yövuorossa: 
  
-   Vapaalla: Lasse Iivo
+   Vapaalla: Lasse Iivo 123 asd
 
 Sunnuntai2: 
    Aamuvuorossa: 
  
-   Iltavuorossa:  Lasse Iivo
+   Iltavuorossa: 
  
    Yövuorossa: 
  
-   Vapaalla: 123 asd
+   Vapaalla: Lasse Iivo 123 asd
 
 Maanantai3: 
    Aamuvuorossa: 

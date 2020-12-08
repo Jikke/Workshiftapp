@@ -171,7 +171,8 @@ public class WorkshiftappTest {
      
      @Test
      public void periodIsEmployeeAvailableNo(){
-         testDay.setShift(testEmployee.getName(), "aamu");
+         testDay = new Day("Tiistai1",3,3,2);
+         testPeriod.setEmployeeMorning(testDay, testEmployee.getName());
          boolean free = testPeriod.isEmployeeAvailable(testEmployee,testDay,"ilta");
          assertEquals(false, free);
      }
@@ -184,7 +185,7 @@ public class WorkshiftappTest {
     }
      
      @Test
-    public void dayRemoveShiftProperArgument() {
+    public void dayRemoveShiftMorning() {
         Day day2 = testPeriod.getDays().get(1);
         day2.setShift(testEmployee.getName(), "aamu");
         day2.removeShift(testEmployee.getName());
@@ -194,7 +195,7 @@ public class WorkshiftappTest {
      @Test
     public void periodSetEmployeeMorningProperArgument() {
         testPeriod.setEmployeeMorning(testPeriod.getDays().get(1),testEmployee.getName());
-        assertEquals("aamu", testPeriod.getDays().get(1).findEmployeeShift(testEmployee.getName()));
+        assertEquals("aamu",testPeriod.getDays().get(1).findEmployeeShift(testEmployee.getName()));
     }
     
      @Test
@@ -213,5 +214,65 @@ public class WorkshiftappTest {
     public void periodSetEmployeeDayoffProperArgument() {
         testPeriod.setEmployeeDayoff(testPeriod.getDays().get(1),testEmployee.getName());
         assertEquals("vapaa", testPeriod.getDays().get(1).findEmployeeShift(testEmployee.getName()));
+    }
+    
+    @Test
+    public void dayRemoveShiftEvening() {
+        testDay.setShift(testEmployee.getName(), "ilta");
+        testDay.removeShift(testEmployee.getName());
+        assertNotEquals("ilta", testDay.findEmployeeShift(testEmployee.getName()));
+    }
+    
+    @Test
+    public void dayRemoveShiftNight() {
+        testDay.setShift(testEmployee.getName(), "yö");
+        testDay.removeShift(testEmployee.getName());
+        assertNotEquals("yö", testDay.findEmployeeShift(testEmployee.getName()));
+    }
+    
+    @Test
+    public void dayRemoveShiftDayoff() {
+        testDay.setShift(testEmployee.getName(), "vapaa");
+        testDay.removeShift(testEmployee.getName());
+        assertNotEquals("vapaa", testDay.findEmployeeShift(testEmployee.getName()));
+    }
+    
+    @Test
+    public void dayHowManyMoreToShiftMorning(){
+        testDay.setShift(testEmployee.getName(),"aamu");
+        assertEquals(2,testDay.howManyMoreToShift("aamu"));
+    }
+    
+    @Test
+    public void dayHowManyMoreToShiftEvening(){
+        testDay.setShift(testEmployee.getName(),"ilta");
+        assertEquals(2,testDay.howManyMoreToShift("ilta"));
+    }
+    
+    @Test
+    public void dayHowManyMoreToShiftNight(){
+        testDay.setShift(testEmployee.getName(),"yö");
+        assertEquals(1,testDay.howManyMoreToShift("yö"));
+    }
+    
+    @Test
+    public void dayHowManyMoreToShiftNightCapped(){
+        testDay.setShift(testEmployee.getName(),"yö");
+        testDay.setShift(testEmployee.getName(),"yö");
+        assertEquals(-2,testDay.howManyMoreToShift("yö"));
+    }
+    
+    @Test
+    public void periodGetEmployees(){
+      ArrayList<Person> employeeArray = new ArrayList<Person>();
+      employeeArray.add(testEmployee);
+      assertEquals(employeeArray, testPeriod.getEmployees());
+    }
+    
+    @Test
+    public void periodPrintEmployees(){
+        String employeeString = "\ntestEmployee\nSecond\n";
+        testPeriod.addEmployee(new Person("Second"));
+        assertEquals(employeeString, testPeriod.printEmployees());
     }
 }

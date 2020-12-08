@@ -68,7 +68,6 @@ public class Person {
     }
 
     public int getDayIndex(String dayName) {
-
         Set keySet = this.shifts.keySet();
         ArrayList<String> keyArray = new ArrayList<>(keySet);
         for (String keys : keyArray) {

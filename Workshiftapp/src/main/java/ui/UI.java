@@ -30,9 +30,8 @@ import javafx.stage.Stage;
  *
  * @author jeoleivo
  */
-public class Main extends Application {
+public class UI extends Application {
 
-    private Scanner input;
     private Period currentPeriod;
 
     private Stage window;
@@ -49,7 +48,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        input = new Scanner(System.in);
         window = primaryStage;
 
         //Luodaan Button-oliot
@@ -209,6 +207,9 @@ public class Main extends Application {
 
         Button proceedButton = new Button("Syötä!");
         GridPane.setConstraints(proceedButton, 1, 2);
+        
+        Button leaveButton = new Button("Poistu");
+        GridPane.setConstraints(leaveButton, 1, 3);
 
         proceedButton.setOnAction(e -> {
 
@@ -224,8 +225,15 @@ public class Main extends Application {
             }
         }
         );
+        
+        leaveButton.setOnAction(e -> {
+            window.setScene(mainScene);
+            window.setTitle("WorkShiftApp");
+            window.show();
+        }
+        );
 
-        createPeriodGrid.getChildren().addAll(createPeriodInfo, minValuesInput, proceedButton);
+        createPeriodGrid.getChildren().addAll(createPeriodInfo, minValuesInput, proceedButton, leaveButton);
         Scene createdPeriodScene = new Scene(createPeriodGrid, 325, 200);
         return createdPeriodScene;
     }
@@ -312,8 +320,8 @@ public class Main extends Application {
 
         GridPane appointShiftsGrid = createGridPane();
 
-        Label appointShiftsInfo = new Label("Valitse pudotusvalikosta päivä, klikkaa vuoro\n"
-                + " ja kirjoita kenttään vuoroon lisättävän työntekijän nimi.");
+        Label appointShiftsInfo = new Label("Valitse pudotusvalikosta päivä, klikkaa vuoro \n"
+                + "ja kirjoita kenttään vuoroon lisättävän työntekijän nimi.");
         GridPane.setConstraints(appointShiftsInfo, 1, 0);
 
         //Luodaan päivien pudotusvalikko
@@ -333,14 +341,21 @@ public class Main extends Application {
         dayoffChoice = new RadioButton("Vapaa");
 
         shiftToggle.getToggles().addAll(morningChoice, eveningChoice, nightChoice, dayoffChoice);
-
+        //asetetaan aamuvuoro vakioksi
+        morningChoice.setSelected(true);
+        
         GridPane.setConstraints(morningChoice, 1, 2);
         GridPane.setConstraints(eveningChoice, 1, 3);
         GridPane.setConstraints(nightChoice, 1, 4);
         GridPane.setConstraints(dayoffChoice, 1, 5);
 
-        TextField employeeNameInput = new TextField();
-        GridPane.setConstraints(employeeNameInput, 1, 6);
+        //Luodaan työntekijöistä pudotusvalikko
+        ChoiceBox<String> dropDownEmployees = new ChoiceBox<>();
+        for (Person currentPerson : currentPeriod.getEmployees()) {
+            dropDownEmployees.getItems().add(currentPerson.getName());
+        }
+        dropDownEmployees.getSelectionModel().selectFirst();
+        GridPane.setConstraints(dropDownEmployees, 1, 6);
 
         Button proceedButton = new Button("Lisää!");
         GridPane.setConstraints(proceedButton, 1, 7);
@@ -353,18 +368,17 @@ public class Main extends Application {
 
         //"Lisää!"-nappulan toiminnallisuus
         proceedButton.setOnAction(e -> {
-            Person foundEmployee = currentPeriod.findEmployee(employeeNameInput.getText());
+            String chosenEmployee = chosenDropDownEmployee(dropDownEmployees);
 
-            if (foundEmployee != null) {
-                int howManyMore = this.setPeriodEmployees(chosenDropDownDay(dropDownDays), chosenShift(), employeeNameInput.getText());
+                int howManyMore = this.setPeriodEmployees(chosenDropDownDay(dropDownDays), chosenShift(), chosenEmployee);
                 //vapaa-vuoro, johon lisäys ei vaadi lepoaikojen tarkastamista TAI 
                 //minimityöntekijöiden määrä on saavutettu
                 if (chosenShift().equals("vapaa") || howManyMore == -2) {
                     GridPane addedEmployeesGrid = createGridPane();
                     infoLabel.setText("Työntekijän lisääminen vuoroon onnistui!");
                     addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, employeeNameInput, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = this.createAppointShiftsScene();
+                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
                     window.setScene(addedEmployeesScene);
                     window.show();
 
@@ -376,8 +390,8 @@ public class Main extends Application {
                     infoLabel.setText("Työntekijää ei lisätty vuoroon.");
 
                     addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, employeeNameInput, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 400, 400);
+                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
                     window.setScene(addedEmployeesScene);
                     window.show();
                 } //tilanteet, joissa vuoroon tarvitaan vielä työntekijöitä  
@@ -388,24 +402,11 @@ public class Main extends Application {
                             + chosenShift() + "vuoroon tarvitaan vielä " + howManyMore + " työntekijää lisää.");
 
                     addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, employeeNameInput, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 400, 400);
+                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
                     window.setScene(addedEmployeesScene);
                     window.show();
-
                 }
-                //virheellinen työntekijän nimi
-            } else {
-                AlertBox.display("Virhe!", "Syöttämääsi työntekijää ei löydy!");
-                GridPane addedEmployeesGrid = createGridPane();
-                infoLabel.setText("Työntekijää ei lisätty vuoroon.");
-
-                addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                        nightChoice, dayoffChoice, employeeNameInput, proceedButton, leaveButton, infoLabel);
-                Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 400, 400);
-                window.setScene(addedEmployeesScene);
-                window.show();
-            }
         });
 
         leaveButton.setOnAction(e -> {
@@ -416,7 +417,7 @@ public class Main extends Application {
 
         //Luodaan appointShiftsScene
         appointShiftsGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                nightChoice, dayoffChoice, employeeNameInput, proceedButton, leaveButton, infoLabel);
+                nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
         Scene createdAppointShiftsScene = new Scene(appointShiftsGrid, 400, 400);
 
         return createdAppointShiftsScene;

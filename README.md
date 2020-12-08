@@ -26,3 +26,10 @@ generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSH
 
 Suoritus komennolla \
 ```java -jar Workshiftapp-1.0-SNAPSHOT.jar```
+
+### Javadoc generointi
+
+Komento
+```mvn javadoc:javadoc```
+generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta
+```target/site/apidocs/index.html```

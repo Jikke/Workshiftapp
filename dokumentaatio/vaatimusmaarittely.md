@@ -13,6 +13,7 @@ Alkuvaiheessa sovelluksella on vain _vuorosuunnittelija_ -käyttäjärooli. Myö
 Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
    - Uuden työjakson luonti
+   - Uuden työntekijän lisääminen
    - Työntekijän lisääminen vuoroihin
    - Työjakson tarkastelu
    - Työntekijän vuoron tarkastelu
@@ -61,7 +62,7 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
    
 ### Tärkeimpiä seuraavat laajennukset
    
-   - \[ ] Graafinen käyttöliittymä
+   - \[x] (viikko 6) Graafinen käyttöliittymä
    - \[x] (viikko 5) Työjakson muokkaus luomisen jälkeen
    - \[ ] Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
    - \[ ] Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan

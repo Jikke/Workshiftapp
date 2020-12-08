@@ -11,7 +11,7 @@ Esim. 10,10,4
 
 ### Uusien työntekijöiden lisääminen
 
-Painikkeesta "Lisää työntekijöitä" aukeaa näkymä, jossa lisätään uusia työntekijöitä luodulle työjaksolle. Kenttään annetaan lisättävän työntekijän nimi\
+Painikkeesta "Lisää työntekijöitä" aukeaa näkymä, jossa lisätään uusia työntekijöitä luodulle työjaksolle. Kenttään annetaan lisättävän työntekijän nimi
 ja painetaan "Lisää!" -painiketta. Ohjelma ei hyväksy kahta samannimistä työntekijää.
 
 ### Työntekijöiden lisääminen vuoroihin
@@ -21,12 +21,12 @@ haluttu vuoro valintapainikkeista ja lopuksi vuoroon lisättävä työntekijä a
 
 ### Työjakson tarkastelu
 
-Painikkeesta "Työjakson tarkastelu" voidaan tarkastella työjakson nykytilaa. Painike avaa gedit-tekstieditorilla näkyviin generoidun pediod.txt tiedoston. \
+Painikkeesta "Työjakson tarkastelu" voidaan tarkastella työjakson nykytilaa. Painike avaa gedit-tekstieditorilla näkyviin generoidun pediod.txt tiedoston. 
 Tässä tiedostossa näkyy listana työpäivät, sekä niiden eri vuoroihin lisätyt ja vapaalla olevat työntekijät. Painiketta painaessa period.txt generoituu aina uudestaan.
 
 ### Työntekijän vuoron tarkastus
 
-Painikkeesta "Työntekijän vuoron tarkastus" voidaan etsiä yksittäisen työntekijän tietyn päivän työvuoro. Ylemmästä pudotusvalikosta valitaan työntekijän nimi \
+Painikkeesta "Työntekijän vuoron tarkastus" voidaan etsiä yksittäisen työntekijän tietyn päivän työvuoro. Ylemmästä pudotusvalikosta valitaan työntekijän nimi 
 ja alemmasta pudotusvalikosta tarkasteltava päivä. Haku tapahtuu painamalla "Hae!" -painiketta.
 
 ### Poistu

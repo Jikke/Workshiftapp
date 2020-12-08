@@ -2,6 +2,10 @@
 Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelua. Sovelluksella luodaan työjakso, johon lisätään työpäivien vuoroihin työntekijöitä.
 
 ## Julkaisut
+
+### Viimeisin julkaisu
+[Workshiftapp-1.1](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko6)
+
 ### Ensimmäinen julkaisu
 [Workshiftapp-1.0](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko5)
 

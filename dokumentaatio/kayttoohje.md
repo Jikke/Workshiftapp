@@ -16,7 +16,7 @@ ja painetaan "Lisää!" -painiketta. Ohjelma ei hyväksy kahta samannimistä ty�
 
 ### Työntekijöiden lisääminen vuoroihin
 
-Painikkeesta "Työntekijöiden lisääminen vuoroihin" aukeaa näkymä, jossa määrätään työjaksolle lisätyille työntekijöille työvuoroja. Valitse haluttu työpäivä pudotusvalikosta,\
+Painikkeesta "Työntekijöiden lisääminen vuoroihin" aukeaa näkymä, jossa määrätään työjaksolle lisätyille työntekijöille työvuoroja. Valitse haluttu työpäivä pudotusvalikosta,
 haluttu vuoro valintapainikkeista ja lopuksi vuoroon lisättävä työntekijä alemmasta pudotusvalikosta. Lisäys kyseisen päivän vuoroon tapahtuuu painamalla "Lisää!" -painikkeesta.
 
 ### Työjakson tarkastelu

@@ -6,46 +6,46 @@ Sovelluksen avulla suunnitellaan työntekijöiden työvuorot työjaksoille. Sove
 
 ## Käyttäjät
 
-Alkuvaiheessa sovelluksella on vain _vuorosuunnittelija_ -käyttäjärooli. Myöhemmin saatetaan lisätä _työntekijä_ -käyttäjärooli, joka voi tarkastella itselleen määrättyjä työvuoroja.
+Tällä hetkellä sovelluksella on vain _vuorosuunnittelija_ -käyttäjärooli. Myöhemmin voitaisiin lisätä _työntekijä_ -käyttäjärooli, joka voi tarkastella itselleen määrättyjä työvuoroja.
 
-## Käyttöliittymäluonnos
+## Käyttöliittymä
 
 Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
-   - Uuden työjakson luonti
-   - Uuden työntekijän lisääminen
-   - Työntekijän lisääminen vuoroihin
+   - Luo uusi jakso
+   - Lisää työntekijöitä
+   - Työntekijöiden lisääminen vuoroihin
    - Työjakson tarkastelu
    - Työntekijän vuoron tarkastelu
    - Poistu
 
 ## Sovelluksen tarjoama toiminnallisuus
 
-### Uuden työjakson luonti
+### Luo uusi jakso
 
-- \[x] (viikko 5) Jakson luonnin yhteydessä pyydetään minimityöntekijävaatimukset kullekin vuorolle. 
+- Jakson luonnin yhteydessä pyydetään minimityöntekijävaatimukset kullekin vuorolle. 
 
 Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu-, ilta-, yövuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
 
-### Uusien työntekijöiden luonti
+### Lisää työntekijöitä
 
-   - \[x] Luodaan _työntekijä_ -oliot tälle työjaksolle antamalla työntekijän nimi.
+   - Luodaan _työntekijä_ -oliot tälle työjaksolle antamalla työntekijän nimi.
   
-### Työntekijän lisääminen vuoroihin
+### Työntekijöiden lisääminen vuoroihin
 
-   - \[x] Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
+   - Määritellään kyseisen työntekijän työvuorot ja vapaat kullekin työjakson vuorokaudelle.
 
 ### Työjakson tarkastelu
 
-   - \[x] Tulostaa työntekijöiden vuorot vuorokausittain listattuna 
+   - Avaa gedit-tekstieditorilla työntekijöiden vuorot vuorokausittain listattuna 
    
 ### Työntekijän vuoron tarkistus
 
-   - \[x] Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on
+   - Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on
 
 ### Poistu
 
-   - \[x] Sulkee sovelluksen
+   - Sulkee sovelluksen
    
 ## Jatkokehitysideoita
 
@@ -53,18 +53,12 @@ Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnalli
 
 ### Tärkeimmät laajennukset
 
-   - \[x] Yövuoron lisäys vuorokausiolioon
-   - \[x] (viikko 5) Yövuoron lisäyksen yhteydessä työntekijöiden riittävän vapaa-ajan huomioonotto työvuorojen välissä (vähintään 2 vapaata vuoroa työvuorojen välillä)
-   - \[x] (viikko 5) Työjakson luonnin yhteydessä määritellään kuhunkin vuoroon työntekijöiden minimimäärä
-   - \[x] (viikko 5) Sovellus herjaa vuorojen puuttellisesta vahvuudesta, sekä työntekijöiden puuttellisesta vapaa-ajasta
-   - \[ ] Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
-   - \[ ] Työntekijöille määritellään vapaapäivien määrä
+   - Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
+   - Työntekijöille määritellään vapaapäivien määrä
    
 ### Tärkeimpiä seuraavat laajennukset
-   
-   - \[x] (viikko 6) Graafinen käyttöliittymä
-   - \[x] (viikko 5) Työjakson muokkaus luomisen jälkeen
-   - \[ ] Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
-   - \[ ] Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
-   - \[ ] Työjakson pituuden vapaavalintaisuus
-   - \[ ] Työjaksojen kopiointi
+
+   - Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
+   - Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
+   - Työjakson pituuden vapaavalintaisuus
+   - Työjaksojen kopiointi

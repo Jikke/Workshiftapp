@@ -27,7 +27,7 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/ja
 Komento \
 ```mvn package```
 
-generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSHOT.jar__ \
+generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSHOT.jar__ 
 
 Suoritus komennolla \
 ```java -jar Workshiftapp-1.0-SNAPSHOT.jar```

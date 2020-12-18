@@ -19,7 +19,10 @@ public class Person {
     private final String name;
     private LinkedHashMap<String, String> shifts;
 
-    //konstruktori
+    /**
+     * Kostruktori luo 21 päivää pitkän työvuorolistan ja asetta päiville vakiovuoroksi "vapaa"
+     * @param name Työntekijän nimi
+     */
     public Person(String name) {
         this.name = name;
         this.shifts = new LinkedHashMap<>();
@@ -50,6 +53,11 @@ public class Person {
         return this.name;
     }
 
+    /**
+     * Korvaa nykysen työvuoron annetulla työvuorolla sekä Person, että Day olioista
+     * @param day Käsiteltävä päivä
+     * @param shift Vuoro, johon työntekijä lisätään
+     */
     public void addShift(Day day, String shift) {
         this.shifts.replace(day.toString(), shift);
         day.removeShift(this.getName());
@@ -60,6 +68,11 @@ public class Person {
         return this.shifts.get(dayName);
     }
 
+    /**
+     * Hakee työvuoron indeksin perusteella
+     * @param index Haettavan työvuoron työpäivän indeksi
+     * @return Kyseistä indeksiä vastaava työvuoro
+     */
     public String getShiftwIndex(int index) {
 
         String shift = (new ArrayList<>(this.shifts.values())).get(index);
@@ -67,6 +80,11 @@ public class Person {
 
     }
 
+    /**
+     * Hakee työpäivän indeksin sen nimen perusteella
+     * @param dayName Haettavan työpäivän nimi
+     * @return Kyseistä työpäivää vastaava indeksi tai -1, jos sitä ei löytynyt
+     */
     public int getDayIndex(String dayName) {
         Set keySet = this.shifts.keySet();
         ArrayList<String> keyArray = new ArrayList<>(keySet);

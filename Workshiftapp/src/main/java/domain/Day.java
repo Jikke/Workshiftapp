@@ -116,25 +116,21 @@ public class Day {
     public String findEmployeeShift(String employeeName){
         for (int i = 0; i < this.morning.size(); i++) {
             if(employeeName.equals(this.morning.get(i))){
-//   ei pitäisi poistaa mitään..            this.morning.remove(i);
                return "aamu";
             }
         }    
         for (int i = 0; i < this.evening.size(); i++) {
             if(employeeName.equals(this.evening.get(i))){
-//               this.evening.remove(i);
                return "ilta";
             }
         }    
         for (int i = 0; i < this.night.size(); i++) {
             if(employeeName.equals(this.night.get(i))){
-//               this.night.remove(i);
                return "yö";
             }
         }    
         for (int i = 0; i < this.dayoff.size(); i++) {
             if(employeeName.equals(this.dayoff.get(i))){
-//               this.dayoff.remove(i);
                return "vapaa";
             }
         } 

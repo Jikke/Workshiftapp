@@ -103,7 +103,9 @@ public class UI extends Application {
         //"Työjakson tarkastelu"-nappulan toiminnallisuus
         checkPeriod.setOnAction(e -> {
             if (currentPeriod != null) {
-            checkPeriod();
+                Scene checkPeriodScene = createCheckPeriodScene();
+                window.setScene(checkPeriodScene);
+                window.show();
             } else {
                 AlertBox.display("Virhe!", "Työjaksoa ei ole vielä luotu.");
             }
@@ -126,7 +128,7 @@ public class UI extends Application {
         //Aloitusikkunan asettelu ja avaus
     }
 
-    public void checkPeriod() {
+    public String checkPeriod() {
         ArrayList<Day> days = currentPeriod.getDays();
         String wholePeriod = "";
         //looppaa läpi kaikkien päivien
@@ -161,17 +163,8 @@ public class UI extends Application {
             //kokoa lopulliseen String-olioon tämän päivän osalta kerätyt työntekijät        
             wholePeriod += ("\n" + currentDay.getWeekday() + ": \n" + morning + " \n" + evening + " \n" + night + " \n" + dayoff);
         }
-        //kirjoittaa edelläkootun String-olion period.txt-tiedostoon ja avaa sen gedit-editorilla
-        File periodFile = new File("period.txt");
-        try ( PrintWriter writer = new PrintWriter(periodFile, "UTF-8")) {
-            writer.write(wholePeriod);
-            writer.flush();
-            writer.close();
-//                java.awt.Desktop.getDesktop().edit(periodFile);
-            new ProcessBuilder("gedit", "period.txt").start();
-        } catch (Exception e) {
-            AlertBox.display("Virhe!", "Työjakson kirjoittaminen epäonnistui!");
-        }
+        return wholePeriod;
+
     }
 
     public boolean createPeriod(String userInput) {
@@ -199,7 +192,7 @@ public class UI extends Application {
         GridPane createPeriodGrid = createGridPane();
 
         Label createPeriodInfo = new Label("Anna aamu-, ilta- ja yövuorojen minimivahvuudet \n"
-                + "pilkulla erotettuna:");
+                + "pilkulla erotettuna. Uuden työjakson luonti ylikirjoittaa olemassaolevan:");
         GridPane.setConstraints(createPeriodInfo, 1, 0);
 
         TextField minValuesInput = new TextField();
@@ -207,7 +200,7 @@ public class UI extends Application {
 
         Button proceedButton = new Button("Syötä!");
         GridPane.setConstraints(proceedButton, 1, 2);
-        
+
         Button leaveButton = new Button("Poistu");
         GridPane.setConstraints(leaveButton, 1, 3);
 
@@ -225,7 +218,7 @@ public class UI extends Application {
             }
         }
         );
-        
+
         leaveButton.setOnAction(e -> {
             window.setScene(mainScene);
             window.setTitle("WorkShiftApp");
@@ -343,7 +336,7 @@ public class UI extends Application {
         shiftToggle.getToggles().addAll(morningChoice, eveningChoice, nightChoice, dayoffChoice);
         //asetetaan aamuvuoro vakioksi
         morningChoice.setSelected(true);
-        
+
         GridPane.setConstraints(morningChoice, 1, 2);
         GridPane.setConstraints(eveningChoice, 1, 3);
         GridPane.setConstraints(nightChoice, 1, 4);
@@ -370,43 +363,43 @@ public class UI extends Application {
         proceedButton.setOnAction(e -> {
             String chosenEmployee = chosenDropDownEmployee(dropDownEmployees);
 
-                int howManyMore = this.setPeriodEmployees(chosenDropDownDay(dropDownDays), chosenShift(), chosenEmployee);
-                //vapaa-vuoro, johon lisäys ei vaadi lepoaikojen tarkastamista TAI 
-                //minimityöntekijöiden määrä on saavutettu
-                if (chosenShift().equals("vapaa") || howManyMore == -2) {
-                    GridPane addedEmployeesGrid = createGridPane();
-                    infoLabel.setText("Työntekijän lisääminen vuoroon onnistui!");
-                    addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
-                    window.setScene(addedEmployeesScene);
-                    window.show();
+            int howManyMore = this.setPeriodEmployees(chosenDropDownDay(dropDownDays), chosenShift(), chosenEmployee);
+            //vapaa-vuoro, johon lisäys ei vaadi lepoaikojen tarkastamista TAI 
+            //minimityöntekijöiden määrä on saavutettu
+            if (chosenShift().equals("vapaa") || howManyMore == -2) {
+                GridPane addedEmployeesGrid = createGridPane();
+                infoLabel.setText("Työntekijän lisääminen vuoroon onnistui!");
+                addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
+                        nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
+                window.setScene(addedEmployeesScene);
+                window.show();
 
-                    //Lepoajat eivät täyty, virhekoodi -10 
-                } else if (howManyMore == -10) {
-                    AlertBox.display("Virhe!", "Kyseistä työntekijää ei voitu lisätä tähän vuoroon, \n"
-                            + "koska lepoajat eivät täyttyisi.");
-                    GridPane addedEmployeesGrid = createGridPane();
-                    infoLabel.setText("Työntekijää ei lisätty vuoroon.");
+                //Lepoajat eivät täyty, virhekoodi -10 
+            } else if (howManyMore == -10) {
+                AlertBox.display("Virhe!", "Kyseistä työntekijää ei voitu lisätä tähän vuoroon, \n"
+                        + "koska lepoajat eivät täyttyisi.");
+                GridPane addedEmployeesGrid = createGridPane();
+                infoLabel.setText("Työntekijää ei lisätty vuoroon.");
 
-                    addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
-                    window.setScene(addedEmployeesScene);
-                    window.show();
-                } //tilanteet, joissa vuoroon tarvitaan vielä työntekijöitä  
-                else {
+                addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
+                        nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
+                window.setScene(addedEmployeesScene);
+                window.show();
+            } //tilanteet, joissa vuoroon tarvitaan vielä työntekijöitä  
+            else {
 
-                    GridPane addedEmployeesGrid = createGridPane();
-                    infoLabel.setText("Työntekijän lisääminen vuoroon onnistui!\n"
-                            + chosenShift() + "vuoroon tarvitaan vielä " + howManyMore + " työntekijää lisää.");
+                GridPane addedEmployeesGrid = createGridPane();
+                infoLabel.setText("Työntekijän lisääminen vuoroon onnistui!\n"
+                        + chosenShift() + "vuoroon tarvitaan vielä " + howManyMore + " työntekijää lisää.");
 
-                    addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
-                            nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
-                    Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
-                    window.setScene(addedEmployeesScene);
-                    window.show();
-                }
+                addedEmployeesGrid.getChildren().addAll(appointShiftsInfo, dropDownDays, morningChoice, eveningChoice,
+                        nightChoice, dayoffChoice, dropDownEmployees, proceedButton, leaveButton, infoLabel);
+                Scene addedEmployeesScene = new Scene(addedEmployeesGrid, 500, 500);
+                window.setScene(addedEmployeesScene);
+                window.show();
+            }
         });
 
         leaveButton.setOnAction(e -> {
@@ -489,6 +482,55 @@ public class UI extends Application {
         return howManyMore;
     }
 
+    //Luo Työnjakson tarkstelu -scenen
+    public Scene createCheckPeriodScene() {
+        GridPane checkPeriodGrid = createGridPane();
+
+        Label checkPeriodInfo = new Label("Anna tiedoston nimi ilman .txt päätettä. Olemassaoleva tiedosto ylikirjoittuu syöttämällä sen nimi:");
+        GridPane.setConstraints(checkPeriodInfo, 1, 0);
+
+        TextField fileNameInput = new TextField();
+        GridPane.setConstraints(fileNameInput, 1, 1);
+
+        Button proceedButton = new Button("Syötä!");
+        GridPane.setConstraints(proceedButton, 1, 2);
+
+        Button leaveButton = new Button("Poistu");
+        GridPane.setConstraints(leaveButton, 1, 3);
+
+        proceedButton.setOnAction(e -> {
+
+            String fileName = fileNameInput.getText()+".txt";
+            
+            //kirjoittaa checkPeriod-metodin kokoaman String-olion 
+            //.txt-tiedostoon ja avaa sen gedit-editorilla
+            
+            File periodFile = new File(fileName);
+            try (PrintWriter writer = new PrintWriter(periodFile, "UTF-8")) {
+                String fileContent = checkPeriod();
+                writer.write(fileContent);
+                writer.flush();
+                writer.close();
+                new ProcessBuilder("gedit", fileName).start();
+            } catch (Exception s) {
+                AlertBox.display("Virhe!", "Työjakson kirjoittaminen epäonnistui!");
+            }
+        }
+        );
+
+        leaveButton.setOnAction(e -> {
+            window.setScene(mainScene);
+            window.setTitle("WorkShiftApp");
+            window.show();
+        }
+        );
+
+        checkPeriodGrid.getChildren().addAll(checkPeriodInfo, fileNameInput, proceedButton, leaveButton);
+        Scene createdPeriodScene = new Scene(checkPeriodGrid, 325, 200);
+        return createdPeriodScene;
+    }
+
+    //Luo Työntekijän vuoron tarkistus -scenen
     public Scene createCheckEmployeeScene() {
         GridPane checkEmployeeGrid = createGridPane();
 

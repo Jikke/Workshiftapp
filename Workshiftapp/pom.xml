@@ -34,9 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <javadocExecutable>/usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc</javadocExecutable>
-                </configuration>
+                
                 <version>2.10.3</version>
             </plugin>
             <plugin>
@@ -44,8 +42,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <fork>true</fork>
-                    <executable>/usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc</executable>
+                    
                 </configuration>
                 <version>2.5</version>
             </plugin>

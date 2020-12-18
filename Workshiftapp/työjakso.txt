@@ -1,12 +1,12 @@
 
 Maanantai1: 
-   Aamuvuorossa: 
+   Aamuvuorossa:  Lasse
  
-   Iltavuorossa: 
+   Iltavuorossa:  Iivo
  
    Yövuorossa: 
  
-   Vapaalla: Lasse Iivo
+   Vapaalla:
 
 Tiistai1: 
    Aamuvuorossa: 
@@ -76,9 +76,9 @@ Tiistai2:
  
    Iltavuorossa: 
  
-   Yövuorossa:  Lasse
+   Yövuorossa: 
  
-   Vapaalla: Iivo
+   Vapaalla: Lasse Iivo
 
 Keskiviikko2: 
    Aamuvuorossa: 
@@ -182,8 +182,8 @@ Lauantai3:
 Sunnuntai3: 
    Aamuvuorossa: 
  
-   Iltavuorossa: 
+   Iltavuorossa:  Lasse Iivo
  
    Yövuorossa: 
  
-   Vapaalla: Lasse Iivo
+   Vapaalla:

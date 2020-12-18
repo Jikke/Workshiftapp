@@ -187,7 +187,13 @@ public class Period {
         return null;
     }
 
-    
+    /**
+     * Tarkastaa, onko haluttu työntekijä saatavilla tietyn päivän tiettyyn vuoroon
+     * @param employee Tarkasteltava työntekijä
+     * @param today Tarkasteltava päivä
+     * @param neededShift Vuoro, johon tarkasteltavaa työntekijää tarvitaan
+     * @return true, mikäli työntekijä on saatavilla tarvittavaan vuoroon, muutoin false
+     */
     public boolean isEmployeeAvailable(Person employee, Day today, String neededShift) {
         int indexOfToday = employee.getDayIndex(today.getWeekday());
         String todaysShift = employee.getShiftwIndex(indexOfToday);
@@ -222,7 +228,12 @@ public class Period {
 
         return false;
     }
-
+    /**
+     * Tarkastaa työtenkijän vuoron tiettynä päivänä
+     * @param employeeName Tarkasteltava työntekijän nimi
+     * @param dayName Tarkasteltava päivän nimi
+     * @return Kyseisen työntekijän työvuoro tarkasteltuna työpäivänä
+     */
     public String checkEmployee(String employeeName, String dayName) {
         return this.findEmployee(employeeName).getShift(dayName);
     }

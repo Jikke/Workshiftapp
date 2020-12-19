@@ -35,7 +35,7 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
 ### Työjakson tarkastelu
 
-   - Pyytää nimen .txt-tiedostolle, johon listataan työntekijöiden vuorot vuorokausittain. Tämän jälkeen luo ja avaa sen gedit-tekstieditorilla. 
+   - Pyytää nimen .txt-tiedostolle, johon listataan työntekijöiden vuorot vuorokausittain. Tämän jälkeen luo ja avaa sen _period-files_ -kansiosta gedit-tekstieditorilla. 
    
 ### Työntekijän vuoron tarkistus
 

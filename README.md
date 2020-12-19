@@ -32,9 +32,16 @@ generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSH
 Suoritus komennolla \
 ```java -jar Workshiftapp-1.0-SNAPSHOT.jar```
 
-### Javadoc generointi
+### Javadoc
 
 Komento
 ```mvn javadoc:javadoc```
 generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta
 ```target/site/apidocs/index.html```
+
+### Checkstyle
+
+Komento
+```mvn jxr:jxr checkstyle:checkstyle```
+tarkistaa checkstyle.xml määritelmien mukaan koodin laadun. Raporttia voi tarkastella selaimella tiedostosta
+```target/site/checkstyle.html```

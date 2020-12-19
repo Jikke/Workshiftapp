@@ -1,6 +1,10 @@
 # Workshiftapp
 Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelua. Sovelluksella luodaan työjakso, johon lisätään työpäivien vuoroihin työntekijöitä.
 
+## Huomioitavaa
+
+Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten tarkastelu ei ole mahdollista suoraan sovelluksen avulla ilman sitä. Jaksosta kuitenkin luodaan .txt tiedosto projektin _period_files_ -kansioon, josta sitä voi tarkastella avaamalla sen manuaalisesti työasemasta löytyvällä tekstieditorilla.
+
 ## Julkaisut
 
 ### Viimeisin julkaisu
@@ -25,16 +29,22 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/ja
 
 ### Suoritettavan jarin generointi
 Komento \
-```mvn package```
-
+```mvn package```\
 generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSHOT.jar__ 
 
 Suoritus komennolla \
 ```java -jar Workshiftapp-1.0-SNAPSHOT.jar```
 
-### Javadoc generointi
+### Javadoc
 
-Komento
-```mvn javadoc:javadoc```
-generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta
+Komento \
+```mvn javadoc:javadoc```\
+generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta\
 ```target/site/apidocs/index.html```
+
+### Checkstyle
+
+Komento\
+```mvn jxr:jxr checkstyle:checkstyle```\
+tarkistaa tiedoston [checkstyle.xml](https://github.com/Jikke/Workshiftapp/blob/master/Workshiftapp/checkstyle.xml) määritelmien mukaan koodin laadun. Raporttia voi tarkastella selaimella tiedostosta\
+```target/site/checkstyle.html```

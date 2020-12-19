@@ -6,6 +6,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.List;
+import org.javatuples.Pair;
+import org.javatuples.Tuple;
 
 /**
  *
@@ -22,7 +25,13 @@ public class Day {
     private final int nightMin;
     private final ArrayList<String> dayoff;
 
-    //konstruktori
+    /**
+     * Kostruktori määrittää päivän nimen, sekä työvuorojen minimivahvuudet.
+     * @param dayname Päivän nimi
+     * @param morningMin Aamuvuoron minimivahvuus
+     * @param eveningMin Iltavuoron minimivahvuus
+     * @param nightMin Yövuoron minimivahvuus
+     */
     public Day(String dayname, int morningMin, int eveningMin, int nightMin) {
         this.weekday = dayname;
         this.morning = new ArrayList<>();
@@ -34,6 +43,22 @@ public class Day {
         this.dayoff = new ArrayList<>();
     }
 
+    public ArrayList<String> getMorning() {
+        return this.morning;
+    }
+
+    public ArrayList<String> getEvening() {
+        return this.evening;
+    }
+
+    public ArrayList<String> getNight() {
+        return this.night;
+    }
+
+    public ArrayList<String> getDayoff() {
+        return this.dayoff;
+    }
+    
     public String getWeekday() {
         return this.weekday;
     }
@@ -49,142 +74,111 @@ public class Day {
     public int getNightMin() {
         return this.nightMin;
     }
-
-    public void setShift(String name, String shift) {
-        if (shift.equals("aamu")) {
-            this.morning.add(name);
-            return;
-        }
-        if (shift.equals("ilta")) {
-            this.evening.add(name);
-            return;
-        }
-        if (shift.equals("yö")) {
-            this.night.add(name);
-            return;
-        }
-        if (shift.equals("vapaa")) {
-            this.dayoff.add(name);
-            return;
-        } else {
-            System.out.println("Virheellinen syöte");
-            return;
-        }
-
+    
+    /**
+     * Asettaa työntekijän työvuoroon.
+     * @param employeeName Vuoroon lisättävän työntekijän nimi
+     * @param shift Vuoro, johon työntekijä lisätään
+     */
+    public void setShift(String employeeName, String shift) {
+        ArrayList<String> shiftList = getShiftList(shift).getValue0();
+        shiftList.add(employeeName);
     }
-    //poistaa nykyisen vuoron
-    public boolean removeShift(String employeeName){
-       String currenShift = this.findEmployeeShift(employeeName);
-       if(currenShift!=null){
-        if (currenShift.equals("aamu")) {
-           for (int i = 0; i < this.morning.size(); i++) {
-            if(employeeName.equals(this.morning.get(i))){
-               this.morning.remove(i);
-               return true;
+    
+    /**
+     * Poistaa työntekijän työvuorosta.
+     * @param employeeName Vuorosta poistettavan työntekijän nimi
+     */
+    public boolean removeShift(String employeeName) { 
+        String currentShift = this.findEmployeeShift(employeeName);
+        Pair<ArrayList<String>, Integer> pair = getShiftList(currentShift);
+        ArrayList<String> shiftEmployees = pair.getValue0();
+        shiftEmployees.remove(getShift(employeeName, shiftEmployees));
+        return true;
+    } 
+    
+    /**
+     * Palauttaa työntekijän työvuoron järjestysluvun(index).
+     * @param employeeName Työntekijän nimi, jonka vuoro haetaan
+     * @param shiftList Tarkasteltavan työvuoron työntekijälista
+     * @return Työntekijän löytyessä järjestysnumero, muutoin -1
+     */
+    private int getShift(String employeeName, ArrayList<String> shiftList) { 
+        for (int i = 0; i < shiftList.size(); i++) {
+            if (employeeName.equals(shiftList.get(i))) { 
+                return i;
             }
         }
-           
-        }
-        if (currenShift.equals("ilta")) {
-            for (int i = 0; i < this.evening.size(); i++) {
-            if(employeeName.equals(this.evening.get(i))){
-               this.evening.remove(i);
-               return true;
-            }
-        }
-        }    
-        if (currenShift.equals("yö")) {
-            for (int i = 0; i < this.night.size(); i++) {
-            if(employeeName.equals(this.night.get(i))){
-               this.night.remove(i);
-               return true;
-            }
-        }
-        }    
-        if (currenShift.equals("vapaa")) {
-            for (int i = 0; i < this.dayoff.size(); i++) {
-            if(employeeName.equals(this.dayoff.get(i))){
-               this.dayoff.remove(i);
-               return true;
-            }
-        }
-        }
-        }
-            return false;
+        return -1;    
+    }
+    
+    /**
+     * Palauttaa parin, jonka ensimmäinen osa on lista vuoron työntekijöistä ja toinen osa vuoron minimivahvuus.
+     * @param shift Tarkasteltava työvuoro
+     * @return Pari-olio, jonka ensimmäinen osa on vuoron työntekijälista ja toinen osa vuoron minimivahvuus
+     */
+    
+    private Pair<ArrayList<String>, Integer> getShiftList(String shift) { 
+        switch (shift) { 
+            case "aamu":
+                return new Pair(this.morning , this.morningMin);
+            case "ilta":
+                return new Pair(this.evening , this.eveningMin);
+            case "yö":
+                return new Pair(this.night , this.nightMin);
+            case "vapaa":
+                return new Pair(this.dayoff , 999);
+            default:
+                return null;
         } 
-    //palauttaa työntekijän tämänhetkisen vuoron
-    public String findEmployeeShift(String employeeName){
+    }
+    
+    /**
+     * Hakee työntekijän nimen perusteella tämän työvuoron
+     * @param employeeName Tarkasteltava työntekijän nimi
+     * @return Löytyessään palauttaa vuoron nimen, muutoin palaute on null
+     */
+    public String findEmployeeShift(String employeeName) { 
         for (int i = 0; i < this.morning.size(); i++) {
-            if(employeeName.equals(this.morning.get(i))){
-               return "aamu";
+            if (employeeName.equals(this.morning.get(i))) { 
+                return "aamu";
             }
         }    
         for (int i = 0; i < this.evening.size(); i++) {
-            if(employeeName.equals(this.evening.get(i))){
-               return "ilta";
+            if (employeeName.equals(this.evening.get(i))) { 
+                return "ilta";
             }
         }    
         for (int i = 0; i < this.night.size(); i++) {
-            if(employeeName.equals(this.night.get(i))){
-               return "yö";
+            if (employeeName.equals(this.night.get(i))) { 
+                return "yö";
             }
         }    
-        for (int i = 0; i < this.dayoff.size(); i++) {
-            if(employeeName.equals(this.dayoff.get(i))){
-               return "vapaa";
+        for (int i = 0; i < this.dayoff.size(); i++) { 
+            if (employeeName.equals(this.dayoff.get(i))) { 
+                return "vapaa";
             }
         } 
         return null;    
     }    
 
-    //palauttaa listan aamuvuoron työntekijöistä
-    public ArrayList<String> getMorning() {
-        return this.morning;
-    }
+     /**
+     * Laskee vuoron minimivahvuuden perusteella, montako työntekijää vuoroon vielä tarvitaan
+     * @param shift Tarkasteltava vuoro
+     * @return Mikäli työntekijöiden minimivahvuutta ei olla saavutettu, palauttaa lukeman tarvittavasta määrästä. Muutoin palauttaa -2
+     */
 
-    //palauttaa listan iltavuoron työntekijöistä
-    public ArrayList<String> getEvening() {
-        return this.evening;
-    }
-
-    //palauttaa listan yövuoron työntekijöistä
-    public ArrayList<String> getNight() {
-        return this.night;
-    }
-
-    //palauttaa listan vapaapäivän työntekijöistä
-    public ArrayList<String> getDayoff() {
-        return this.dayoff;
-    }
-
-    public int howManyMoreToShift(String shift){
-        switch(shift){
-            case "aamu":
-            if(this.getMorning().size()<this.morningMin){
-               int thisManyMore =  this.morningMin - this.getMorning().size();
-               return thisManyMore;
-            } else {
-               return -2; 
-            }
-            case "ilta":
-            if(this.getEvening().size()<this.eveningMin){
-               int thisManyMore =  this.eveningMin - this.getEvening().size();
-               return thisManyMore;
-            } else {
-               return -2; 
-            }
-            case "yö":
-            if(this.getNight().size()<this.nightMin){
-               int thisManyMore =  this.nightMin - this.getNight().size();
-               return thisManyMore;
-            } else {
-               return -2; 
-            }
-            default:
-            System.out.println("Virheellinen syöte.");
-            return -2;
+    public int howManyMoreToShift(String shift) { 
+        Pair<ArrayList<String>, Integer> pair = getShiftList(shift);
+        ArrayList<String> shiftEmployees = pair.getValue0();
+        int minValue = pair.getValue1();
+        if (shiftEmployees.size() < minValue) { 
+            int thisManyMore =  minValue - shiftEmployees.size();
+            return thisManyMore;
+        } else {
+            return -2; 
         }
-    }
+    }        
     
     public String toString() {
         return this.getWeekday();

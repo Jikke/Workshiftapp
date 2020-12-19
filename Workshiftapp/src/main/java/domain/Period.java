@@ -128,7 +128,8 @@ public class Period {
         }
         return false;
     }
-/**
+
+    /**
      * @see setEmployeeMorning(Day currentDay, String employeeName)
      */
     public boolean setEmployeeNight(Day currentDay, String employeeName) {
@@ -139,7 +140,8 @@ public class Period {
         }
         return false;
     }
-/**
+
+    /**
      * @see setEmployeeMorning(Day currentDay, String employeeName)
      */
     public boolean setEmployeeDayoff(Day currentDay, String employeeName) {
@@ -151,6 +153,7 @@ public class Period {
         }
         return false;
     }
+
     /**
      * @return Palauttaa listan Period-olioon lisätyistä työntekijöistä
      */
@@ -162,7 +165,7 @@ public class Period {
         return employeeList;
     }
 
-     /**
+    /**
      * @return Palauttaa String-oliona Period-olioon lisätyt työntekijät
      */
     public String printEmployees() {
@@ -188,11 +191,14 @@ public class Period {
     }
 
     /**
-     * Tarkastaa, onko haluttu työntekijä saatavilla tietyn päivän tiettyyn vuoroon
+     * Tarkastaa, onko haluttu työntekijä saatavilla tietyn päivän tiettyyn
+     * vuoroon
+     *
      * @param employee Tarkasteltava työntekijä
      * @param today Tarkasteltava päivä
      * @param neededShift Vuoro, johon tarkasteltavaa työntekijää tarvitaan
-     * @return true, mikäli työntekijä on saatavilla tarvittavaan vuoroon, muutoin false
+     * @return true, mikäli työntekijä on saatavilla tarvittavaan vuoroon,
+     * muutoin false
      */
     public boolean isEmployeeAvailable(Person employee, Day today, String neededShift) {
         int indexOfToday = employee.getDayIndex(today.getWeekday());
@@ -228,8 +234,10 @@ public class Period {
 
         return false;
     }
+
     /**
      * Tarkastaa työtenkijän vuoron tiettynä päivänä
+     *
      * @param employeeName Tarkasteltava työntekijän nimi
      * @param dayName Tarkasteltava päivän nimi
      * @return Kyseisen työntekijän työvuoro tarkasteltuna työpäivänä

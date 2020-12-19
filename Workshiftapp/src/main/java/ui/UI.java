@@ -123,7 +123,11 @@ public class UI extends Application {
         });
 
         //Poistu-nappulan toiminnallisuus
-        exit.setOnAction(e -> window.close());
+        exit.setOnAction(e -> {
+                Scene exitScene = createExitScene();
+                window.setScene(exitScene);
+                window.show();          
+        });
 
         //Aloitusikkunan asettelu ja avaus
     }
@@ -500,7 +504,7 @@ public class UI extends Application {
 
         proceedButton.setOnAction(e -> {
 
-            String fileName = fileNameInput.getText()+".txt";
+            String fileName = "period_files/"+fileNameInput.getText()+".txt";
             
             //kirjoittaa checkPeriod-metodin kokoaman String-olion 
             //.txt-tiedostoon ja avaa sen gedit-editorilla
@@ -583,6 +587,55 @@ public class UI extends Application {
         return createdPeriodScene;
     }
 
+    //Luo Exit- Scenen
+    public Scene createExitScene(){ 
+    GridPane exitGrid = createGridPane();
+
+        Label exitInfo = new Label("Tyhjennetäänkö period_files -kansioon tallennetut työjaksotiedostot?");
+        GridPane.setConstraints(exitInfo, 1, 0);
+
+        
+
+        Button deleteAndExit = new Button("Tyhjennä ja sulje");
+        GridPane.setConstraints(deleteAndExit, 1, 1);
+        
+        Button exit = new Button("Sulje");
+        GridPane.setConstraints(exit, 1, 2);
+
+        Button returnButton = new Button("Peruuta");
+        GridPane.setConstraints(returnButton, 1, 3);
+    
+        deleteAndExit.setOnAction(e -> {
+            
+            File directory = new File("period_files/");
+            File[] files = directory.listFiles();
+
+            for (File file : files){
+                try{
+                file.delete();
+                }catch(Exception s){
+                AlertBox.display("Virhe!","Tiedoston "+file.getName()+" poisto epäonnistui.");
+                }
+            }
+            
+            window.close();
+            
+        });
+        
+        exit.setOnAction(e -> {
+            window.close();
+        });
+        
+        returnButton.setOnAction(e -> {
+            window.setScene(mainScene);
+            window.show();
+        });
+        
+        exitGrid.getChildren().addAll(exitInfo, deleteAndExit, exit, returnButton);
+        Scene createdPeriodScene = new Scene(exitGrid, 400, 300);
+        return createdPeriodScene;
+        
+    }    
     //Luo geneerisen GridPanen
     public GridPane createGridPane() {
         GridPane gridPane = new GridPane();

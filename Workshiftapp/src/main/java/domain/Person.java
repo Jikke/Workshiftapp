@@ -60,7 +60,9 @@ public class Person {
      */
     public void addShift(Day day, String shift) {
         this.shifts.replace(day.toString(), shift);
-        day.removeShift(this.getName());
+        if (day.findEmployeeShift(this.getName()) != null) { 
+            day.removeShift(this.getName());
+        }
         day.setShift(this.getName(), shift);
     }
 

@@ -12,4 +12,6 @@
 | 2.12. | 4    | päivitetty github-repositoriota, laajennettu testikattavuutta, luotu jar-paketti ja julkaistu sovelluksen ensimmäinen versio |
 | 7.12. | 9    | aloitettu graafisen käyttöliittymän implementointi ja saatu se suurimmalta osin toimimaan|
 | 8.12. | 9    | viimeistelty GUI, laajennettu testikattavuus yli 60% ja aloitettu javadocsin teko. Lisätty viikon 6 release GitHubiin|
-| Summa | 64   | 
+| 18.12. | 3   | lisätty pieniä ominaisuuksia työjakso-tekstitiedostojen tallentamiseen ja niiden poistoon sovelluksen sulun yhteydessä|
+| 19.12. | 4   | siistitty luokkien koodia toteuttamaan checkstyle-säännöt laajemmin. Laajennettu javadoc kattamaan kaikki luokat. Päivitetään github-sivua|
+| Summa | 71   | 

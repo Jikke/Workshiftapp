@@ -132,7 +132,7 @@ public class WorkshiftappTest {
 
     @Test
     public void periodGetDayWrongArgument() {
-        assertNotEquals(testPeriod.getDays().get(16), testPeriod.findDay("Tiistai3"));
+        assertEquals(null, testPeriod.findDay("Tiistai4"));
     }
 
     @Test
@@ -170,10 +170,26 @@ public class WorkshiftappTest {
      }
      
      @Test
-     public void periodIsEmployeeAvailableNo(){
+     public void periodIsEmployeeAvailableMorningNo(){
+         testDay = new Day("Tiistai1",3,3,2);
+         testPeriod.setEmployeeEvening(testDay, testEmployee.getName());
+         boolean free = testPeriod.isEmployeeAvailable(testEmployee,testDay,"aamu");
+         assertEquals(false, free);
+     }
+     
+     @Test
+     public void periodIsEmployeeAvailableEveningNo(){
          testDay = new Day("Tiistai1",3,3,2);
          testPeriod.setEmployeeMorning(testDay, testEmployee.getName());
          boolean free = testPeriod.isEmployeeAvailable(testEmployee,testDay,"ilta");
+         assertEquals(false, free);
+     }
+     
+     @Test
+     public void periodIsEmployeeAvailableNightNo(){
+         testDay = new Day("Tiistai1",3,3,2);
+         testPeriod.setEmployeeMorning(testDay, testEmployee.getName());
+         boolean free = testPeriod.isEmployeeAvailable(testEmployee,testDay,"yö");
          assertEquals(false, free);
      }
      
@@ -199,9 +215,21 @@ public class WorkshiftappTest {
     }
     
      @Test
+    public void periodSetEmployeeMorningWrongArgument() {
+        Person fakePerson = new Person("Fake");
+        assertEquals(false ,testPeriod.setEmployeeMorning(testPeriod.getDays().get(1),fakePerson.getName()));
+    }
+    
+     @Test
     public void periodSetEmployeeEveningProperArgument() {
         testPeriod.setEmployeeEvening(testPeriod.getDays().get(1),testEmployee.getName());
         assertEquals("ilta", testPeriod.getDays().get(1).findEmployeeShift(testEmployee.getName()));
+    }
+    
+     @Test
+    public void periodSetEmployeeEveningWrongArgument() {
+        Person fakePerson = new Person("Fake");
+        assertEquals(false ,testPeriod.setEmployeeEvening(testPeriod.getDays().get(1),fakePerson.getName()));
     }
     
      @Test
@@ -211,9 +239,21 @@ public class WorkshiftappTest {
     }
     
      @Test
+    public void periodSetEmployeeNightWrongArgument() {
+        Person fakePerson = new Person("Fake");
+        assertEquals(false ,testPeriod.setEmployeeNight(testPeriod.getDays().get(1),fakePerson.getName()));
+    }
+    
+     @Test
     public void periodSetEmployeeDayoffProperArgument() {
         testPeriod.setEmployeeDayoff(testPeriod.getDays().get(1),testEmployee.getName());
         assertEquals("vapaa", testPeriod.getDays().get(1).findEmployeeShift(testEmployee.getName()));
+    }
+    
+     @Test
+    public void periodSetEmployeeDayoffWrongArgument() {
+        Person fakePerson = new Person("Fake");
+        assertEquals(false ,testPeriod.setEmployeeDayoff(testPeriod.getDays().get(1),fakePerson.getName()));
     }
     
     @Test
@@ -274,5 +314,10 @@ public class WorkshiftappTest {
         String employeeString = "\ntestEmployee\nSecond\n";
         testPeriod.addEmployee(new Person("Second"));
         assertEquals(employeeString, testPeriod.printEmployees());
+    }
+    
+    @Test
+    public void isEmployeeAvailableNot(){
+        
     }
 }

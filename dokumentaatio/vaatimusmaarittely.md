@@ -23,9 +23,7 @@ Sovellus aukeaa valikkoon, jossa on seuraavat valinnat:
 
 ### Luo uusi jakso
 
-- Jakson luonnin yhteydessä pyydetään minimityöntekijävaatimukset kullekin vuorolle. 
-
-Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuorokausiolio sisältää aamu-, ilta-, yövuoro, sekä vapaapäivä -kentät. Työjakso alkaa perusversiossa maanantaina ja päättyy kolmannen viikon sunnuntaihin.
+- Jakson luonnin yhteydessä pyydetään minimityöntekijävaatimukset kullekin vuorolle (aamu, ilta, yö). 
 
 ### Lisää työntekijöitä
 
@@ -37,28 +35,21 @@ Työjakso on perusversiossa aina 21 _vuorokausi_ -oliota sisältävä olio. Vuor
 
 ### Työjakson tarkastelu
 
-   - Avaa gedit-tekstieditorilla työntekijöiden vuorot vuorokausittain listattuna 
+   - Pyytää nimen .txt-tiedostolle, johon listataan työntekijöiden vuorot vuorokausittain. Tämän jälkeen luo ja avaa sen gedit-tekstieditorilla. 
    
 ### Työntekijän vuoron tarkistus
 
-   - Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on
+   - Tulostaa työntekijän nimen ja työpäivän perusteella, missä vuorossa kyseinen työntekijä tuona päivänä on.
 
 ### Poistu
 
-   - Sulkee sovelluksen
+   - Kysyy käyttäjältä, poistetaanko _period_files_ -kansion sisältö, jonka jälkeen sulkee sovelluksen.
    
 ## Jatkokehitysideoita
 
 Perusversion jälkeen sovellusta voidaan laajentaa esim. seuraavilla toiminnallisuuksilla.
 
-### Tärkeimmät laajennukset
-
    - Sovellus tarjoaa käyttäjälle vapaiden perusteella potentiaalisia työntekijöitä työvuoroille
-   - Työntekijöille määritellään vapaapäivien määrä
-   
-### Tärkeimpiä seuraavat laajennukset
-
    - Työjakso voi alkaa käyttäjän valitsemana viikonpäivänä
    - Työjakson tarkastelu -toiminto piirtää grafiikan tulosteenaan
    - Työjakson pituuden vapaavalintaisuus
-   - Työjaksojen kopiointi

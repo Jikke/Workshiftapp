@@ -3,7 +3,7 @@ Sovelluksen tarkoitus on helpottaa työvuorojen suunnittelua. Sovelluksella luod
 
 ## Huomioitavaa
 
-Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten tarkastelu ei ole mahdollista suoraan sovelluksen avulla ilman sitä. Jaksosta kuitenkin luodaan .txt tiedosto projektin __period_files__ -kansioon, josta sitä voi tarkastella avaamalla sen manuaalisesti työasemasta löytyvällä tekstieditorilla.
+Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten tarkastelu ei ole mahdollista suoraan sovelluksen avulla ilman sitä. Jaksosta kuitenkin luodaan .txt tiedosto projektin _period_files_ -kansioon, josta sitä voi tarkastella avaamalla sen manuaalisesti työasemasta löytyvällä tekstieditorilla.
 
 ## Julkaisut
 

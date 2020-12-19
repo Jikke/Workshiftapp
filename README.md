@@ -25,8 +25,7 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/ja
 
 ### Suoritettavan jarin generointi
 Komento \
-```mvn package```
-
+```mvn package```\
 generoi hakemistoon target suoritettavan jar-tiedoston __Workshiftapp-1.0-SNAPSHOT.jar__ 
 
 Suoritus komennolla \
@@ -34,14 +33,14 @@ Suoritus komennolla \
 
 ### Javadoc
 
-Komento
-```mvn javadoc:javadoc```
-generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta
+Komento \
+```mvn javadoc:javadoc```\
+generoi selaimella avattavat javadoc-tiedoston. Tiedoston avaus nettiselaimella kohteesta\
 ```target/site/apidocs/index.html```
 
 ### Checkstyle
 
-Komento
-```mvn jxr:jxr checkstyle:checkstyle```
-tarkistaa checkstyle.xml määritelmien mukaan koodin laadun. Raporttia voi tarkastella selaimella tiedostosta
+Komento\
+```mvn jxr:jxr checkstyle:checkstyle```\
+tarkistaa checkstyle.xml määritelmien mukaan koodin laadun. Raporttia voi tarkastella selaimella tiedostosta\
 ```target/site/checkstyle.html```

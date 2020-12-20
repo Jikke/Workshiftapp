@@ -18,7 +18,7 @@ Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten ta
 [Vaatimusmäärittely](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)\
 [Arkkitehtuurikuvaus](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)\
 [Testausdokumentti](https://github.com/Jikke/Workshiftapp/blob/master/dokumentaatio/testausdokumentti.md)\
-[Työaikakirjanpito](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)\
+[Työaikakirjanpito](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)
 
 ## Komentorivitoiminnot
 ### Testaus

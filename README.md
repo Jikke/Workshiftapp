@@ -14,10 +14,11 @@ Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten ta
 [Workshiftapp-1.0](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
-[vaatimusmaarittely.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)\
-[kayttoohje.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)\
-[tyoaikataulukko.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)\
-[arkkitehtuuri.md](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Käyttöohje](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)\
+[Vaatimusmäärittely](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)\
+[Arkkitehtuurikuvaus](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)\
+[Testausdokumentti](https://github.com/Jikke/Workshiftapp/blob/master/dokumentaatio/testausdokumentti.md)\
+[Työaikakirjanpito](https://github.com/Jikke/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikataulukko.md)\
 
 ## Komentorivitoiminnot
 ### Testaus

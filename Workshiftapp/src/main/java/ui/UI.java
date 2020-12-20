@@ -196,7 +196,8 @@ public class UI extends Application {
         GridPane createPeriodGrid = createGridPane();
 
         Label createPeriodInfo = new Label("Anna aamu-, ilta- ja yövuorojen minimivahvuudet \n"
-                + "pilkulla erotettuna. Uuden työjakson luonti ylikirjoittaa olemassaolevan:");
+                + "pilkulla erotettuna. Uuden työjakson luonti \n"
+                + "ylikirjoittaa olemassaolevan:");
         GridPane.setConstraints(createPeriodInfo, 1, 0);
 
         TextField minValuesInput = new TextField();
@@ -490,7 +491,9 @@ public class UI extends Application {
     public Scene createCheckPeriodScene() {
         GridPane checkPeriodGrid = createGridPane();
 
-        Label checkPeriodInfo = new Label("Anna tiedoston nimi ilman .txt päätettä. Olemassaoleva tiedosto ylikirjoittuu syöttämällä sen nimi:");
+        Label checkPeriodInfo = new Label("Anna tiedoston nimi ilman .txt päätettä. \n"
+                + "Olemassaoleva tiedosto ylikirjoittuu \n"
+                + "syöttämällä sen nimi:");
         GridPane.setConstraints(checkPeriodInfo, 1, 0);
 
         TextField fileNameInput = new TextField();
@@ -591,7 +594,8 @@ public class UI extends Application {
     public Scene createExitScene(){ 
     GridPane exitGrid = createGridPane();
 
-        Label exitInfo = new Label("Tyhjennetäänkö period_files -kansioon tallennetut työjaksotiedostot?");
+        Label exitInfo = new Label("Tyhjennetäänkö period_files -kansioon \n"
+                + "tallennetut työjaksotiedostot?");
         GridPane.setConstraints(exitInfo, 1, 0);
 
         
@@ -610,6 +614,7 @@ public class UI extends Application {
             File directory = new File("period_files/");
             File[] files = directory.listFiles();
 
+            if (files!=null){ 
             for (File file : files){
                 try{
                 file.delete();
@@ -617,7 +622,7 @@ public class UI extends Application {
                 AlertBox.display("Virhe!","Tiedoston "+file.getName()+" poisto epäonnistui.");
                 }
             }
-            
+            }
             window.close();
             
         });

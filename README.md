@@ -8,9 +8,10 @@ Työjaksojen tarkastelu on toteutettu gedit-tekstieditoria käyttäen. Täten ta
 ## Julkaisut
 
 ### Viimeisin julkaisu
-[Workshiftapp-1.1](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko6)
+[Workshiftapp-1.2](https://github.com/Jikke/Workshiftapp/releases/tag/viikko7)
 
-### Ensimmäinen julkaisu
+### Aikaisemmat julkaisut
+[Workshiftapp-1.1](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko6)
 [Workshiftapp-1.0](https://github.com/Jikke/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
